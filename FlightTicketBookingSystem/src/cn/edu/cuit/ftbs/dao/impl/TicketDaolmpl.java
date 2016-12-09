@@ -3,6 +3,7 @@ package cn.edu.cuit.ftbs.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.sun.xml.internal.fastinfoset.sax.SAXDocumentSerializerWithPrefixMapping;
 
@@ -27,16 +28,19 @@ public class TicketDaolmpl implements ITicketDao {
 
 
 	@Override
-	public boolean doCreate(Ticket ticket) throws Exception {
+	public boolean doCreate(Ticket ticket) throws SQLException{
 		String sql = "INSERT INTO T_Ticket(ticketNum,seatClass,id,username) values(?,?,?,?)";
 		conn = OracleDbManager.getConnection();
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(3, ticket.getTicketNum());
+		pstmt.setString(1, ticket.getTicketNum());
 		pstmt.setString(2, ticket.getSeatClass());
-		pstmt.setString(4, ticket.getFlightInfo().getId());
-		pstmt.setString(1, ticket.getCustomer().getUsername());
-
+		pstmt.setString(3, ticket.getFlightInfo().getId());
+		pstmt.setString(4, ticket.getCustomer().getUsername());
+        System.out.println("ceshi");
+        System.out.println(pstmt.executeUpdate());
 		if (pstmt.executeUpdate() > 0) {
+			
+			System.out.println(pstmt.executeUpdate());
 			OracleDbManager.closeConnection(pstmt, conn);
 			return true;
 		}
@@ -49,10 +53,10 @@ public class TicketDaolmpl implements ITicketDao {
 		String sql = "UPDATE T_Ticket SET ticketNum=?,seatClass=?,id=?,userName=? where ticketNum=?";
 		conn = OracleDbManager.getConnection();
 		pstmt = conn.prepareStatement(sql);
-		this.pstmt.setString(3, ticket.getTicketNum());
+		this.pstmt.setString(1, ticket.getTicketNum());
 		this.pstmt.setString(2, ticket.getSeatClass());
-		this.pstmt.setString(4, ticket.getFlightInfo().getId());
-		this.pstmt.setString(1, ticket.getCustomer().getUsername());
+		this.pstmt.setString(3, ticket.getFlightInfo().getId());
+		this.pstmt.setString(4, ticket.getCustomer().getUsername());
 		if (pstmt.executeUpdate() > 0) {
 			OracleDbManager.closeConnection(pstmt, conn);
 			return true;
@@ -66,7 +70,7 @@ public class TicketDaolmpl implements ITicketDao {
 		String sql = "DELETE FROM T_Ticket WHERE ticketNum=?";
 		conn = OracleDbManager.getConnection();
 		pstmt = conn.prepareStatement(sql);
-		this.pstmt.setString(3, ticketNum);
+		this.pstmt.setString(1, ticketNum);
 		if (pstmt.executeUpdate() > 0) {
 			OracleDbManager.closeConnection(pstmt, conn);
 			return true;
@@ -80,18 +84,18 @@ public class TicketDaolmpl implements ITicketDao {
 		Ticket ticket = null;
 		ICustomerService iCustomerService =new CustomerServiceImpl();
 		IFlightService iFlightService = new FlightServiceImpl();
-		String sql = "SELECT * FROM T_Ticket WHERE ticketNum=?";
+		String sql = "SELECT ticketNum,seatClass,id,username FROM T_Ticket WHERE ticketNum=?";
 		conn = OracleDbManager.getConnection();
 		pstmt = conn.prepareStatement(sql);
-		this.pstmt.setString(3, ticketNum);
+		this.pstmt.setString(1, ticketNum);
 		//TODO 数据库错误，无效列索引
 		ResultSet rs = this.pstmt.executeQuery();
 		if (rs.next()) {
 			ticket = new Ticket();
-			ticket.setTicketNum(rs.getString(3));
+			ticket.setTicketNum(rs.getString(1));
 			ticket.setSeatClass(rs.getString(2));
-			ticket.setCustomer(iCustomerService.qureyCustomer(rs.getString(1)));
-			ticket.setFlightInfo(iFlightService.queryFlight((rs.getString(4))));
+			ticket.setFlightInfo(iFlightService.queryFlight((rs.getString(3))));
+			ticket.setCustomer(iCustomerService.qureyCustomer(rs.getString(4)));
 		}
 		return ticket;
 	}

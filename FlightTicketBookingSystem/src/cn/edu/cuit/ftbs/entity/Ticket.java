@@ -6,8 +6,7 @@ package cn.edu.cuit.ftbs.entity;
  *
  */
 public class Ticket {
-
-
+	
     private  String seatClass;
     private  String ticketNum;
     private Flight flightInfo;
@@ -16,11 +15,18 @@ public class Ticket {
 
     public Ticket(){}
 
-    public Ticket( String seatClass,String ticketNum){
+    public Ticket( String ticketNum,String seatClass){
     	setSeatClass(seatClass);
     	setTicketNum(ticketNum);
     }
 
+	public Ticket(String seatClass, String ticketNum, Flight flightInfo, Customer customer) {
+		super();
+		this.seatClass = seatClass;
+		this.ticketNum = ticketNum;
+		this.flightInfo = flightInfo;
+		this.customer = customer;
+	}
 
 	public  String getSeatClass() {
 		return seatClass;
