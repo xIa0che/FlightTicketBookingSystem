@@ -63,7 +63,6 @@ public class FlightDisplayTableModel implements TableModel {
 			try {
 				beginDate = df.parse(beginDateString);
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			String endDateString = df.format(flight.getArrivalTime());
@@ -71,7 +70,6 @@ public class FlightDisplayTableModel implements TableModel {
 			try {
 				endDate = df.parse(endDateString);
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			long betweenDate = (endDate.getTime() - beginDate.getTime()) / (1000*60*60*24);

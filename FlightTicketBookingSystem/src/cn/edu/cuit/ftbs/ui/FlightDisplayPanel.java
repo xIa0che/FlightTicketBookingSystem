@@ -6,10 +6,7 @@ import java.awt.BorderLayout;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 import cn.edu.cuit.ftbs.entity.Flight;
 import cn.edu.cuit.ftbs.entity.Ticket;
@@ -18,14 +15,8 @@ import cn.edu.cuit.ftbs.service.impl.TicketServicelmpl;
 
 import javax.swing.JButton;
 import java.awt.FlowLayout;
-import javax.swing.BoxLayout;
-import java.awt.GridLayout;
 import java.util.Date;
 import java.util.List;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -41,6 +32,10 @@ import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 
 public class FlightDisplayPanel extends JPanel {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 8049180474444127538L;
 	private JTable table;
 	private List<Flight> flightList;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -141,7 +136,7 @@ public class FlightDisplayPanel extends JPanel {
 				try {
 					iTicketService.addTicket(ticket);
 				} catch (Exception e1) {
-					//iTicketService异常javadoc
+
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "机票预订成功", null, JOptionPane.PLAIN_MESSAGE);
