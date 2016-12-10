@@ -1,7 +1,5 @@
 package cn.edu.cuit.ftbs.ui;
 
-
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,8 +19,10 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+
 /**
  * RegisterFrame类实现注册窗体
+ *
  * @author 陈星
  */
 public class RegisterFrame extends JFrame {
@@ -43,27 +43,21 @@ public class RegisterFrame extends JFrame {
 	private Customer customer = new Customer();
 	private ICustomerService cs = new CustomerServiceImpl();
 	private LoginFrame loginFrame = null;
+	private MainFrame mainFrame;
 
 	/**
 	 * Launch the application.
 	 */
-/*	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RegisterFrame frame = new RegisterFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
+	/*
+	 * public static void main(String[] args) { EventQueue.invokeLater(new
+	 * Runnable() { public void run() { try { RegisterFrame frame = new
+	 * RegisterFrame(); frame.setVisible(true); } catch (Exception e) {
+	 * e.printStackTrace(); } } }); }
+	 */
 	/**
 	 * Create the frame.
 	 */
-	public RegisterFrame(LoginFrame loginFrame, MainFrame mainFrame) {
+	public RegisterFrame(LoginFrame loginFrame) {
 		this.loginFrame = loginFrame;
 		setResizable(false);
 		setTitle("用户注册");
@@ -189,83 +183,92 @@ public class RegisterFrame extends JFrame {
 				String password1 = new String(passwordField1.getPassword());
 				String password2 = new String(passwordField2.getPassword());
 				temp = usernameTextField.getText();
-				if(temp.equals("")){
-					JOptionPane.showMessageDialog(RegisterFrame.this, "用户名不能为空！请输入用户名！","注册失败",JOptionPane.ERROR_MESSAGE);
+				if (temp.equals("")) {
+					JOptionPane.showMessageDialog(RegisterFrame.this, "用户名不能为空！请输入用户名！", "注册失败",
+							JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {
 					try {
-						if(cs.qureyCustomer(temp) == null){
+						if (cs.qureyCustomer(temp) == null) {
 							customer.setUsername(temp);
-						}else{
-							JOptionPane.showMessageDialog(RegisterFrame.this, "用户名已存在！","注册失败",JOptionPane.ERROR_MESSAGE);
+						} else {
+							JOptionPane.showMessageDialog(RegisterFrame.this, "用户名已存在！", "注册失败",
+									JOptionPane.ERROR_MESSAGE);
 							return;
 						}
 					} catch (Exception e1) {
-						// TODO 自动生成的 catch 块
 						e1.printStackTrace();
 					}
 				}
-				if(password1.equals("") || password2.equals("")){
-					JOptionPane.showMessageDialog(RegisterFrame.this, "密码不能为空！请重新输入！","注册失败",JOptionPane.ERROR_MESSAGE);
+				if (password1.equals("") || password2.equals("")) {
+					JOptionPane.showMessageDialog(RegisterFrame.this, "密码不能为空！请重新输入！", "注册失败",
+							JOptionPane.ERROR_MESSAGE);
 					return;
-				}else{
-					if(password1.equals(password2)){
+				} else {
+					if (password1.equals(password2)) {
 						customer.setPassword(password1);
-					}else {
-						JOptionPane.showMessageDialog(RegisterFrame.this, "两次输入密码不一致！请重新输入！","注册失败",JOptionPane.ERROR_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(RegisterFrame.this, "两次输入密码不一致！请重新输入！", "注册失败",
+								JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 				}
 				temp = realnameTextField.getText();
-				if(temp.equals("")){
-					JOptionPane.showMessageDialog(RegisterFrame.this, "真实姓名不能为空！请重新输入！","注册失败",JOptionPane.ERROR_MESSAGE);
+				if (temp.equals("")) {
+					JOptionPane.showMessageDialog(RegisterFrame.this, "真实姓名不能为空！请重新输入！", "注册失败",
+							JOptionPane.ERROR_MESSAGE);
 					return;
-				}else {
+				} else {
 					customer.setName(temp);
 				}
 				temp = customer.getSex();
-				if(temp.equals("")){
-					JOptionPane.showMessageDialog(RegisterFrame.this, "请选择性别！","注册失败",JOptionPane.ERROR_MESSAGE);
+				if (temp.equals("")) {
+					JOptionPane.showMessageDialog(RegisterFrame.this, "请选择性别！", "注册失败", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				temp = telTextField.getText();
-				if(temp.equals("")){
-					JOptionPane.showMessageDialog(RegisterFrame.this, "电话号码不能为空！请重新输入！","注册失败",JOptionPane.ERROR_MESSAGE);
+				if (temp.equals("")) {
+					JOptionPane.showMessageDialog(RegisterFrame.this, "电话号码不能为空！请重新输入！", "注册失败",
+							JOptionPane.ERROR_MESSAGE);
 					return;
-				}else {
+				} else {
 					customer.setTelephone(temp);
 				}
 				temp = idcardTextField.getText();
-				if(temp.equals("")){
-					JOptionPane.showMessageDialog(RegisterFrame.this, "省份证号不能为空！请重新输入！","注册失败",JOptionPane.ERROR_MESSAGE);
+				if (temp.equals("")) {
+					JOptionPane.showMessageDialog(RegisterFrame.this, "省份证号不能为空！请重新输入！", "注册失败",
+							JOptionPane.ERROR_MESSAGE);
 					return;
-				}else {
+				} else {
 					customer.setIdCardNumber(temp);
 				}
 				temp = emailTextField.getText();
-				if(temp.equals("")){
-					JOptionPane.showMessageDialog(RegisterFrame.this, "邮箱不能为空！请重新输入！","注册失败",JOptionPane.ERROR_MESSAGE);
+				if (temp.equals("")) {
+					JOptionPane.showMessageDialog(RegisterFrame.this, "邮箱不能为空！请重新输入！", "注册失败",
+							JOptionPane.ERROR_MESSAGE);
 					return;
-				}else {
+				} else {
 					customer.seteMail(temp);
 				}
 				temp = addressTextField.getText();
-				if(temp.equals("")){
-					JOptionPane.showMessageDialog(RegisterFrame.this, "地址不能为空！请重新输入！","注册失败",JOptionPane.ERROR_MESSAGE);
+				if (temp.equals("")) {
+					JOptionPane.showMessageDialog(RegisterFrame.this, "地址不能为空！请重新输入！", "注册失败",
+							JOptionPane.ERROR_MESSAGE);
 					return;
-				}else {
+				} else {
 					customer.setAddress(temp);
 				}
 
 				try {
 					if (!cs.register(customer)) {
-						JOptionPane.showMessageDialog(RegisterFrame.this, "注册出错！","注册失败",JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(RegisterFrame.this, "注册出错！", "注册失败", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-				setVisible(false);//关闭登陆窗
+				setVisible(false);// 关闭登陆窗
+				mainFrame = new MainFrame(customer);
 				mainFrame.setVisible(true);
 			}
 		});
@@ -277,7 +280,7 @@ public class RegisterFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);//关闭注册窗
+				setVisible(false);// 关闭注册窗
 				loginFrame.setVisible(true);
 			}
 		});

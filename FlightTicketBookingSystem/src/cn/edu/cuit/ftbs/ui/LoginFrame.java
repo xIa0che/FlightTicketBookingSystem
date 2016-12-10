@@ -39,7 +39,7 @@ public class LoginFrame extends JFrame {
 	private AdminLoginPanel loginpanel = new AdminLoginPanel();
 	private ICustomerService iCustomerService = new CustomerServiceImpl();
 	private MainFrame mainFrame;
-	private RegisterFrame register = new RegisterFrame(this, mainFrame);
+	private RegisterFrame register = new RegisterFrame(this);
 
 	/**
 	 * Launch the application.
@@ -136,7 +136,7 @@ public class LoginFrame extends JFrame {
 				setVisible(false);// 关闭登陆窗
 				try {
 					mainFrame = new MainFrame(iCustomerService.qureyCustomer(username));
-					//TODO iCustomerService异常说明
+					//TODO iCustomerService异常说明有错误
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
