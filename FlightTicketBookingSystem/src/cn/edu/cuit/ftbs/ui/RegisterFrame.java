@@ -42,7 +42,7 @@ public class RegisterFrame extends JFrame {
 	private JPasswordField passwordField1;
 	private Customer customer = new Customer();
 	private ICustomerService cs = new CustomerServiceImpl();
-	private AdminLoginFrame loginFrame = null;
+	private LoginFrame loginFrame = null;
 
 	/**
 	 * Launch the application.
@@ -63,7 +63,7 @@ public class RegisterFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegisterFrame(AdminLoginFrame loginFrame) {
+	public RegisterFrame(LoginFrame loginFrame, MainFrame mainFrame) {
 		this.loginFrame = loginFrame;
 		setResizable(false);
 		setTitle("用户注册");
@@ -132,7 +132,7 @@ public class RegisterFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO 自动生成的方法存根
+
 				customer.setSex(e.getActionCommand());
 			}
 		});
@@ -144,7 +144,6 @@ public class RegisterFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO 自动生成的方法存根
 				customer.setSex(e.getActionCommand());
 			}
 		});
@@ -185,7 +184,7 @@ public class RegisterFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO 自动生成的方法存根
+
 				String temp;
 				String password1 = new String(passwordField1.getPassword());
 				String password2 = new String(passwordField2.getPassword());
@@ -267,7 +266,7 @@ public class RegisterFrame extends JFrame {
 					e1.printStackTrace();
 				}
 				setVisible(false);//关闭登陆窗
-				//TODO 显示主窗体
+				mainFrame.setVisible(true);
 			}
 		});
 		panel.add(button1);

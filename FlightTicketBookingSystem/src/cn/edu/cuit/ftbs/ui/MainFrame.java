@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import cn.edu.cuit.ftbs.entity.Customer;
 import cn.edu.cuit.ftbs.util.JImagePane;
 
 import javax.swing.BoxLayout;
@@ -23,16 +24,18 @@ import javax.swing.SwingConstants;
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.event.ActionListener;
+import java.security.cert.TrustAnchor;
 import java.awt.event.ActionEvent;
 
 public class MainFrame extends JFrame {
 	private FlightQueryFrame flightQueryFrame = new FlightQueryFrame();
 	private JPanel contentPane;
+	private UserInfoFrame userInfoFrame = null;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -43,12 +46,14 @@ public class MainFrame extends JFrame {
 				}
 			}
 		});
-	}
+	} */
 
 	/**
 	 * Create the frame.
 	 */
-	public MainFrame() {
+	public MainFrame(Customer customer) {
+		this.userInfoFrame = new UserInfoFrame(customer);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 500);
 		contentPane = new JPanel();
@@ -56,9 +61,8 @@ public class MainFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 		Image iamge = new ImageIcon("src/cn/edu/cuit/ftbs/resource/giphy.gif").getImage();
-	    JImagePane imagePane = new JImagePane(iamge, JImagePane.SCALED);
+		JImagePane imagePane = new JImagePane(iamge, JImagePane.SCALED);
 		contentPane.add(imagePane);
-
 
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
@@ -88,14 +92,21 @@ public class MainFrame extends JFrame {
 		panel.add(panel_2);
 
 		JButton btnNewButton = new JButton("个人信息");
+		btnNewButton.addActionListener(new ActionListener() {
 
-		JButton btnNewButton_1 = new JButton("New button");
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				userInfoFrame.setVisible(true);
+			}
+		});
+
+		JButton btnNewButton_1 = new JButton("退票改签");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 
-		JButton btnNewButton_2 = new JButton("我的订单");
+		JButton btnNewButton_2 = new JButton("系统管理");
 
 		JButton btnNewButton_3 = new JButton("查询预订");
 		btnNewButton_3.addActionListener(new ActionListener() {
@@ -105,34 +116,26 @@ public class MainFrame extends JFrame {
 		});
 
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(30)
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_2.createSequentialGroup()
-							.addComponent(btnNewButton_2)
-							.addPreferredGap(ComponentPlacement.RELATED, 548, Short.MAX_VALUE)
-							.addComponent(btnNewButton_1))
-						.addGroup(gl_panel_2.createSequentialGroup()
-							.addComponent(btnNewButton)
-							.addPreferredGap(ComponentPlacement.RELATED, 548, Short.MAX_VALUE)
-							.addComponent(btnNewButton_3)))
-					.addContainerGap())
-		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(89)
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNewButton)
-						.addComponent(btnNewButton_3))
-					.addPreferredGap(ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNewButton_2)
-						.addComponent(btnNewButton_1))
-					.addGap(40))
-		);
+		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup().addGap(30)
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel_2.createSequentialGroup().addComponent(btnNewButton_2)
+										.addPreferredGap(ComponentPlacement.RELATED, 548, Short.MAX_VALUE)
+										.addComponent(btnNewButton_1))
+								.addGroup(gl_panel_2.createSequentialGroup().addComponent(btnNewButton)
+										.addPreferredGap(ComponentPlacement.RELATED, 548, Short.MAX_VALUE)
+										.addComponent(btnNewButton_3)))
+						.addContainerGap()));
+		gl_panel_2
+				.setVerticalGroup(
+						gl_panel_2.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel_2.createSequentialGroup().addGap(89)
+										.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+												.addComponent(btnNewButton).addComponent(btnNewButton_3))
+										.addPreferredGap(ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+										.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+												.addComponent(btnNewButton_2).addComponent(btnNewButton_1))
+										.addGap(40)));
 		panel_2.setLayout(gl_panel_2);
 
 		imagePane.add(panel);

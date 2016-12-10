@@ -1,14 +1,13 @@
 package cn.edu.cuit.ftbs.ui;
 
-
-
 import java.awt.Color;
 import java.awt.EventQueue;
-
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import cn.edu.cuit.ftbs.service.ICustomerService;
 import cn.edu.cuit.ftbs.service.impl.CustomerServiceImpl;
@@ -25,9 +24,10 @@ import java.awt.event.ActionEvent;
 
 /**
  * LoginFrame类实现登录窗体
+ *
  * @author 陈星
  */
-public class LoginFrame extends JFrame{
+public class LoginFrame extends JFrame {
 
 	/**
 	 *
@@ -37,8 +37,9 @@ public class LoginFrame extends JFrame{
 	private JTextField textField;
 	private JPasswordField passwordField;
 	private AdminLoginPanel loginpanel = new AdminLoginPanel();
-	private ICustomerService cs = new CustomerServiceImpl();
-	private RegisterFrame register = new RegisterFrame(this);
+	private ICustomerService iCustomerService = new CustomerServiceImpl();
+	private MainFrame mainFrame;
+	private RegisterFrame register = new RegisterFrame(this, mainFrame);
 
 	/**
 	 * Launch the application.
@@ -84,9 +85,9 @@ public class LoginFrame extends JFrame{
 		label.setBounds(109, 174, 54, 15);
 
 		textField = new JTextField();
-		textField.addKeyListener(new KeyAdapter(){
-			public void keyTyped(KeyEvent e){
-				if(e.getKeyChar() == '\n'){
+		textField.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				if (e.getKeyChar() == '\n') {
 					passwordField.requestFocus();
 				}
 			}
@@ -97,9 +98,9 @@ public class LoginFrame extends JFrame{
 
 		JButton loginbutton = new JButton("登陆");
 		passwordField = new JPasswordField();
-		passwordField.addKeyListener(new KeyAdapter(){
-			public void keyTyped(KeyEvent e){
-				if(e.getKeyChar() == '\n'){
+		passwordField.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				if (e.getKeyChar() == '\n') {
 					loginbutton.doClick();
 				}
 			}
@@ -107,33 +108,39 @@ public class LoginFrame extends JFrame{
 		loginpanel.add(passwordField);
 		passwordField.setBounds(157, 171, 125, 21);
 
-
 		loginbutton.setBackground(new Color(204, 255, 255));
 		loginbutton.setBounds(157, 214, 62, 21);
-		loginbutton.addActionListener(new ActionListener(){
+		loginbutton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String username = textField.getText();
 				String password = new String(passwordField.getPassword());
-				if(username.equals("")){
-					JOptionPane.showMessageDialog(LoginFrame.this, "请输入用户名！","登陆失败",JOptionPane.ERROR_MESSAGE);
+				if (username.equals("")) {
+					JOptionPane.showMessageDialog(LoginFrame.this, "请输入用户名！", "登陆失败", JOptionPane.ERROR_MESSAGE);
 					return;
-				}else if(password.equals("")){
-					JOptionPane.showMessageDialog(LoginFrame.this, "请输入密码！","登陆失败",JOptionPane.ERROR_MESSAGE);
+				} else if (password.equals("")) {
+					JOptionPane.showMessageDialog(LoginFrame.this, "请输入密码！", "登陆失败", JOptionPane.ERROR_MESSAGE);
 					return;
-				}else{
+				} else {
 					try {
-					if(!cs.login(username, password)){
-						JOptionPane.showMessageDialog(LoginFrame.this, "用户名或密码不正确！","登陆失败",JOptionPane.ERROR_MESSAGE);
-						return;
-					}
-				} catch (Exception e1) {
+						if (!iCustomerService.login(username, password)) {
+							JOptionPane.showMessageDialog(LoginFrame.this, "用户名或密码不正确！", "登陆失败",
+									JOptionPane.ERROR_MESSAGE);
+							return;
+						}
+					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
 				}
-				setVisible(false);//关闭登陆窗
-				//mainFrame.setVisible(true);//显示主窗体
+				setVisible(false);// 关闭登陆窗
+				try {
+					mainFrame = new MainFrame(iCustomerService.qureyCustomer(username));
+					//TODO iCustomerService异常说明
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				mainFrame.setVisible(true);// 显示主窗体
 			}
 
 		});
@@ -143,11 +150,11 @@ public class LoginFrame extends JFrame{
 		button_1.setBackground(new Color(204, 255, 255));
 		loginpanel.add(button_1);
 		button_1.setBounds(292, 128, 93, 22);
-		button_1.addActionListener(new ActionListener(){
+		button_1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);//关闭登陆窗
+				setVisible(false);// 关闭登陆窗
 				register.setVisible(true);
 			}
 		});
@@ -156,31 +163,31 @@ public class LoginFrame extends JFrame{
 		button_2.setBackground(new Color(204, 255, 255));
 		loginpanel.add(button_2);
 		button_2.setBounds(292, 170, 93, 22);
-		button_2.addActionListener(new ActionListener(){
+		button_2.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				passwordField.setText("");
 				passwordField.requestFocus();
 
-			}});
+			}
+		});
 
 		JButton exitButton = new JButton("退出");
 		exitButton.setBackground(new Color(204, 255, 255));
 		loginpanel.add(exitButton);
 		exitButton.setBounds(220, 214, 62, 21);
-		exitButton.addActionListener(new ActionListener(){
+		exitButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				int choice = JOptionPane.showConfirmDialog(LoginFrame.this, "确定要退出吗？","提示",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-				if(choice == 0){
+				int choice = JOptionPane.showConfirmDialog(LoginFrame.this, "确定要退出吗？", "提示", JOptionPane.YES_NO_OPTION,
+						JOptionPane.QUESTION_MESSAGE);
+				if (choice == 0) {
 					System.exit(0);
 				}
 			}
 		});
 	}
-
-
 
 }

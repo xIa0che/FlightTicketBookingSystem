@@ -15,7 +15,7 @@ import cn.edu.cuit.ftbs.util.OracleDbManager;
 public class CustomerDaoImpl implements ICustomerDao {
 	private Connection conn;
 	private PreparedStatement pstmt = null;
-	
+
 	@Override
 	public boolean doCreate(Customer customer){
 		boolean flag = false;
@@ -41,7 +41,7 @@ public class CustomerDaoImpl implements ICustomerDao {
 		}finally{
 			OracleDbManager.closeConnection(pstmt, conn);
 		}
-		
+
 		return flag;
 	}
 
@@ -62,17 +62,15 @@ public class CustomerDaoImpl implements ICustomerDao {
 			this.pstmt.setString(6, customer.getAddress());
 			this.pstmt.setString(7, customer.getPassword());
 			this.pstmt.setString(8, customer.getUsername());
-			System.out.println(customer.getUsername());
-			//if(this.pstmt.executeUpdate() > 0){
+			if(this.pstmt.executeUpdate() > 0){
 				flag = true;
-				System.out.println(pstmt.executeUpdate());
-			//}
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
 			OracleDbManager.closeConnection(pstmt, conn);
 		}
-		
+
 		return flag;
 	}
 
@@ -92,7 +90,7 @@ public class CustomerDaoImpl implements ICustomerDao {
 		}finally{
 			OracleDbManager.closeConnection(pstmt, conn);
 		}
-		
+
 		return flag;
 	}
 
@@ -142,7 +140,7 @@ public class CustomerDaoImpl implements ICustomerDao {
 		}finally{
 			OracleDbManager.closeConnection(pstmt, conn);
 		}
-		
+
 		return flag;
 	}
 
