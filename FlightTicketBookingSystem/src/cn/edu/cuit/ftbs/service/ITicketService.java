@@ -25,15 +25,16 @@ public interface ITicketService {
 	public boolean deleteTicket(String username);
 	/**
 	 * 执行根据用户名更新机票
-	 * @param ticket 包含数据的对象
+	 * @param TicketNum 待修改机票的编号
+	 * @param ticket 包含新数据的对象
 	 * @return 如果修改成功，返回true，如果数据不存在或修改失败，返回false
 	 */
-	public boolean updateTicket(String username);
+	public boolean updateTicket(String TicketNum,Ticket ticket);
 	/**
 	 * 执行查询机票操作
 	 * @param username 要查询机票的用户名 
-	 * @return 如果没有指定的顾客姓名，返回值为null，<br>
-	 * 如果有指定的雇员信息，则将所有的雇员信息包装到Ticket实例化对象之中返回。
+	 * @return 如果没有指定的用户名，返回值为null，<br>
+	 * 如果有指定的机票信息，则将所有的机票信息包装到Ticket实例化对象列表之中返回。
 	 */
 	public List<Ticket> queryTicket(String username);
 }

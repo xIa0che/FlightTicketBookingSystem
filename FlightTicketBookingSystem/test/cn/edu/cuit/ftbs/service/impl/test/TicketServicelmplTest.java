@@ -30,8 +30,10 @@ public class TicketServicelmplTest {
 	@Test
 	public void testUpdateTicket() {
 		ITicketService its = new TicketServicelmpl();
-		its.updateTicket("3");
-		System.out.println("chenggong");
+		Flight flightinfo = new Flight("1");
+		Customer customer =new Customer("xiaodeng");
+		Ticket ticket = new Ticket("头等舱","7",flightinfo,customer);
+		its.updateTicket("3",ticket);
 	}
 
 	@Test

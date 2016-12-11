@@ -45,15 +45,15 @@ public class TicketDaolmpl implements ITicketDao {
 	}
 
 	@Override
-	public boolean doUpdate(Ticket ticket) throws SQLException{
-		String sql = "UPDATE T_Ticket SET ticketNum=?,seatClass=?,id=?,userName=? where userName=?";
+	public boolean doUpdate(String ticketNum,Ticket ticket) throws SQLException{
+		String sql = "UPDATE T_Ticket SET ticketNum=?,seatClass=?,id=?,userName=? where ticketNum=?";
 		conn = OracleDbManager.getConnection();
 		pstmt = conn.prepareStatement(sql);
 		this.pstmt.setString(1, ticket.getTicketNum());
 		this.pstmt.setString(2, ticket.getSeatClass());
 		this.pstmt.setString(3, ticket.getFlightInfo().getId());
 		this.pstmt.setString(4, ticket.getCustomer().getUsername());
-		this.pstmt.setString(5, ticket.getCustomer().getUsername());
+		this.pstmt.setString(5, ticketNum);
 		if (pstmt.executeUpdate() > 0) {
 			OracleDbManager.closeConnection(pstmt, conn);
 			return true;
