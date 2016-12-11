@@ -16,25 +16,33 @@ public class TicketServicelmplTest {
 	public void testAddTicket() throws Exception {
 		Flight flightinfo = new Flight("1");
 		Customer customer =new Customer("xiaodeng");
-		Ticket ticket = new Ticket("1","头等舱",flightinfo,customer);
+		Ticket ticket = new Ticket("头等舱","3",flightinfo,customer);
 		ITicketService its = new TicketServicelmpl();
 		its.addTicket(ticket);
 	}
-/*
+
 	@Test
 	public void testDeleteTicket() {
-		fail("Not yet implemented");
+		ITicketService its = new TicketServicelmpl();
+		its.deleteTicket("xiaodeng");
 	}
 
 	@Test
 	public void testUpdateTicket() {
-		fail("Not yet implemented");
+		ITicketService its = new TicketServicelmpl();
+		its.updateTicket("xiaodeng");
+		System.out.println("chenggong");
 	}
 
 	@Test
 	public void testQueryTicket() {
-		fail("Not yet implemented");
+		ITicketService its = new TicketServicelmpl();
+		Ticket ticket = its.queryTicket("xiaodeng");
+		System.out.println(ticket.getSeatClass());
+		System.out.println(ticket.getTicketNum());
+		System.out.println(ticket.getCustomer().getUsername());
+		System.out.println(ticket.getFlightInfo().getId());
 		
-	}*/
+	}
 
 }
