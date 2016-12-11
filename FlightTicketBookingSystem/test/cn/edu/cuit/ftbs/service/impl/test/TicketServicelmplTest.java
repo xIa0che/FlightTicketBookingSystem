@@ -1,6 +1,6 @@
 package cn.edu.cuit.ftbs.service.impl.test;
 
-import static org.junit.Assert.*;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -15,26 +15,40 @@ public class TicketServicelmplTest {
 	@Test
 	public void testAddTicket() throws Exception {
 		Flight flightinfo = new Flight("1");
-		Customer customer =new Customer("xiaodeng");
-		Ticket ticket = new Ticket("1","头等舱",flightinfo,customer);
+		Customer customer =new Customer("xiaoxing");
+		Ticket ticket = new Ticket("头等舱","6",flightinfo,customer);
 		ITicketService its = new TicketServicelmpl();
 		its.addTicket(ticket);
 	}
-/*
+
 	@Test
 	public void testDeleteTicket() {
-		fail("Not yet implemented");
+		ITicketService its = new TicketServicelmpl();
+		its.deleteTicket("xiaoxing");
 	}
 
 	@Test
 	public void testUpdateTicket() {
-		fail("Not yet implemented");
+		ITicketService its = new TicketServicelmpl();
+		Flight flightinfo = new Flight("1");
+		Customer customer =new Customer("xiaodeng");
+		Ticket ticket = new Ticket("经济舱","7",flightinfo,customer);
+		its.updateTicket(ticket);
 	}
 
 	@Test
 	public void testQueryTicket() {
-		fail("Not yet implemented");
+		List<Ticket> ticket;
+		ITicketService its = new TicketServicelmpl();
+		ticket = its.queryTicket("xiaodeng");
+		for(Ticket i: ticket){
+		System.out.println("i");
+		System.out.println(i.getSeatClass());
+		System.out.println(i.getTicketNum());
+		System.out.println(i.getCustomer().getUsername());
+		System.out.println(i.getFlightInfo().getId());
+		}
 		
-	}*/
+	}
 
 }

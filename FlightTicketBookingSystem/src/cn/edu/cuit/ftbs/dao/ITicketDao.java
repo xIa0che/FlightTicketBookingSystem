@@ -2,6 +2,8 @@ package cn.edu.cuit.ftbs.dao;
 
 import java.sql.SQLException;
 
+import java.util.List;
+
 import cn.edu.cuit.ftbs.entity.Ticket;
 
 /**
@@ -10,7 +12,7 @@ import cn.edu.cuit.ftbs.entity.Ticket;
  */
 public interface ITicketDao{
 	/**
-	 * 执行数据的增加操作 ִ
+	 * 执行数据的增加操 ִ
 	 * @param ticket 包含要增加数据的ticket对象
 	 * @return 如果增加数据成功返回true，否则返回false
 	 * @throws SQLException 数据库异常
@@ -25,17 +27,25 @@ public interface ITicketDao{
 	public boolean doUpdate(Ticket ticket) throws SQLException;
 	/**
 	 * 执行数据的删除操作
-	 * @param username 要删除机票的顾客姓名
+	 * @param username 要删除机票的用户名
 	 * @return 如果删除数据成功则返回true，否则返回false
 	 * @throws SQLException 数据库异常
 	 */
 	public boolean doRemove(String username) throws SQLException;
 	/**
-	 * 根据顾客姓名查找机票
-	 * @param username 要查找机票的顾客姓名
-	 * @return 如果没有指定的雇员编号，返回值为null，<br>
-	 * 如果有指定的雇员信息，则将所有的雇员信息包装到Ticket实例化对象之中返回。
+	 * 根据机票编号查找机票
+	 * @param ticketnum 待查找机票的机票编号
+	 * @return 如果没有指定的机票信息，返回值为null，<br>
+	 * 如果有指定的机票信息，则将所有的机票信息包装到Ticket实例化对象之中返回。
 	 * @throws Exception SQLException 数据库异常
 	 */
-	public Ticket findByUsername(String username) throws SQLException;
+	public Ticket findByTicketNum(String ticketnum) throws SQLException;
+	/**
+	 * 根据用户名查找机票
+	 * @param username 待查询机票的用户名
+	 * @return如果没有指定的机票信息，返回值为null，<br>
+	 * 如果有指定的机票信息，返回机票信息的列表
+	 * @throws SQLException 数据库异常
+	 */
+	public List<Ticket> findByUsername(String username) throws SQLException; 
 }

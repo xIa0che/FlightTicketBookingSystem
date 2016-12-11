@@ -1,6 +1,8 @@
 package cn.edu.cuit.ftbs.service.impl;
 
 
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import cn.edu.cuit.ftbs.dao.ITicketDao;
@@ -17,7 +19,7 @@ public class TicketServicelmpl implements ITicketService {
 	@Override
 	public boolean addTicket(Ticket ticket) {
 		try {
-			if (dao.findByUsername(ticket.getCustomer().getUsername()) == null){
+			if (dao.findByTicketNum(ticket.getTicketNum()) == null){
 				return dao.doCreate(ticket);
 			}
 		} catch (Exception e) {
@@ -28,9 +30,9 @@ public class TicketServicelmpl implements ITicketService {
 	}
 
 	@Override
-	public boolean deleteTicket(String ticketNum){
+	public boolean deleteTicket(String username){
 		try {
-			return dao.doRemove(ticketNum);
+			return dao.doRemove(username);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "数据库错误", null, JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
@@ -50,7 +52,7 @@ public class TicketServicelmpl implements ITicketService {
 	}
 
 	@Override
-	public Ticket queryTicket(String username) {
+	public List<Ticket> queryTicket(String username) {
 		try {
 			return dao.findByUsername(username);
 		} catch (Exception e) {
