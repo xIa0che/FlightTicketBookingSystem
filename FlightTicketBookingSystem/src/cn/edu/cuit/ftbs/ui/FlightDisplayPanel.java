@@ -7,6 +7,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 import cn.edu.cuit.ftbs.entity.Flight;
 import cn.edu.cuit.ftbs.entity.Ticket;
@@ -32,9 +33,7 @@ import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 
 public class FlightDisplayPanel extends JPanel {
-	/**
-	 *
-	 */
+
 	private static final long serialVersionUID = 8049180474444127538L;
 	private JTable table;
 	private List<Flight> flightList;
@@ -76,12 +75,13 @@ public class FlightDisplayPanel extends JPanel {
 		table.setGridColor(new Color(64, 181, 226));
 		table.setShowVerticalLines(false);
 		table.setBackground(new Color(240, 250, 253));
-		/*
-		 * table.setModel(new DefaultTableModel( new Object[][] { {"ca132124",
-		 * null, null}, {"ca734513", null, null}, {"ca765379", null, null},
-		 * {"ca765379", null, null}, }, new String[] { "New column",
-		 * "New column", "New column" } ));
-		 */
+
+
+		/* table.setModel(new DefaultTableModel( new Object[][] { {"ca132124",
+		 null, null}, {"ca734513", null, null}, {"ca765379", null, null},
+		 {"ca765379", null, null}, }, new String[] { "New column",
+		 "New column", "New column" } ));*/
+
 
 		FlightDisplayTableModel flightDisplayTableModel = new FlightDisplayTableModel(flightList);
 		table.setModel(flightDisplayTableModel);

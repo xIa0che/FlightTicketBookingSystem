@@ -50,7 +50,7 @@ public class FlightDisplayTableModel implements TableModel {
 		case 0:
 			return flight.getFlightNum();
 		case 1:
-			return flight.getDepatureCity();
+			return flight.getDepartureCity();
 		case 2:
 			return flight.getArrivalCity();
 		case 3:

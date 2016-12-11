@@ -23,9 +23,9 @@ public class FlightServiceImplTest {
 
 	@BeforeClass
 	public static void setupBeforeClass() throws ParseException{
-		departureTime = ft.parse("2016-12-10 07:00");
-		arrivalTime = ft.parse("2016-12-10 10:05");
-		flight = new Flight("CA41942016-12-10", "CA4194", "中国国际航空公司", "320", "北京", "成都",
+		departureTime = ft.parse("2016-12-17 19:00");
+		arrivalTime = ft.parse("2016-12-17 22:15");
+		flight = new Flight("CA41942016-12-17", "CA4194", "中国国际航空公司", "320", "北京", "成都",
 				departureTime, arrivalTime, 1690, 1610, 1140);
 	}
 
@@ -51,14 +51,13 @@ public class FlightServiceImplTest {
 		List<Flight> flightList;
 		flightList = iFlightService.queryFlight("北京", "成都", departureTime);
 		for (Flight i : flightList){
-			SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
 			System.out.println(i.getId());
 		}
 	}
 
 	@Test
 	public void testQueryFlightByid(){
-		String id = "CA41942016-12-08";
+		String id = "CA41102016-12-17";
 		Flight flight = iFlightService.queryFlight(id);
 		System.out.println(flight.getFlightNum());
 	}

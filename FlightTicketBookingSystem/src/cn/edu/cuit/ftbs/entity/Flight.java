@@ -12,7 +12,7 @@ public class Flight {
 	String flightNum;
 	String airline;
 	String planeType;
-	String depatureCity;
+	String departureCity;
 	String arrivalCity;
 	Date departureTime;
 	Date arrivalTime;
@@ -33,7 +33,7 @@ public class Flight {
 		this.flightNum = flightNum;
 		this.airline = airline;
 		this.planeType = planeType;
-		this.depatureCity = depatureCity;
+		this.departureCity = depatureCity;
 		this.arrivalCity = arrivalCity;
 		this.departureTime = departureTime;
 		this.arrivalTime = arrivalTime;
@@ -76,12 +76,12 @@ public class Flight {
 		this.planeType = planeType;
 	}
 
-	public String getDepatureCity() {
-		return depatureCity;
+	public String getDepartureCity() {
+		return departureCity;
 	}
 
-	public void setDepatureCity(String depatureCity) {
-		this.depatureCity = depatureCity;
+	public void setDepartureCity(String depatureCity) {
+		this.departureCity = depatureCity;
 	}
 
 	public String getArrivalCity() {

@@ -32,7 +32,7 @@ public class FlightDaoImpl implements IFlightDao{
 		pstmt.setString(1, flight.getFlightNum());
 		pstmt.setString(2, flight.getAirline());
 		pstmt.setString(3, flight.getPlaneType());
-		pstmt.setString(4, flight.getDepatureCity());
+		pstmt.setString(4, flight.getDepartureCity());
 		pstmt.setString(5, flight.getArrivalCity());
 		pstmt.setTimestamp(6, new Timestamp(flight.getArrivalTime().getTime()));
 		pstmt.setTimestamp(7, new Timestamp(flight.getDepartureTime().getTime()));
@@ -59,7 +59,7 @@ public class FlightDaoImpl implements IFlightDao{
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, flight.getAirline());
 		pstmt.setString(2, flight.getPlaneType());
-		pstmt.setString(3, flight.getDepatureCity());
+		pstmt.setString(3, flight.getDepartureCity());
 		pstmt.setString(4, flight.getArrivalCity());
 		pstmt.setDate(5, new java.sql.Date(flight.getDepartureTime().getTime()));
 		pstmt.setDate(6, new java.sql.Date(flight.getArrivalTime().getTime()));
@@ -90,8 +90,10 @@ public class FlightDaoImpl implements IFlightDao{
 	@Override
 	public List<Flight> findByCondition(String departureCity, String arrivalCity, java.util.Date departureTime) throws SQLException {
 		List<Flight> all = new ArrayList<Flight>();
-		String sql = "SELECT * FROM T_Flight WHERE departureCity=?"
-				+ " AND arrivalCity=? "
+		String sql = "SELECT flightNum,airline,planeType,departureCity,arrivalCity,"
+				+ "departureTime,arrivalTime,id,firstClassCabinPrice,"
+				+ "businessClassCabinPrice, economyClassCabinPrice FROM T_Flight "
+				+ "WHERE departureCity=? AND arrivalCity=? "
 				+ "AND to_char(departuretime, 'yyyy-mm-dd')=?";
 		conn = OracleDbManager.getConnection();
 		pstmt = conn.prepareStatement(sql);
@@ -105,14 +107,14 @@ public class FlightDaoImpl implements IFlightDao{
 			flight.setFlightNum(rs.getString(1));
 			flight.setAirline(rs.getString(2));
 			flight.setPlaneType(rs.getString(3));
-			flight.setDepatureCity(rs.getString(4));
+			flight.setDepartureCity(rs.getString(4));
 			flight.setArrivalCity(rs.getString(5));
 			flight.setDepartureTime(rs.getTimestamp(6));
 			flight.setArrivalTime(rs.getTimestamp(7));
 			flight.setId(rs.getString(8));
-			flight.setFirstClassCabinPrice(rs.getInt(10));
-			flight.setBusinessClassCabinPrice(rs.getInt(11));
-			flight.setEconomyClassCabinPrice(rs.getInt(12));
+			flight.setFirstClassCabinPrice(rs.getInt(9));
+			flight.setBusinessClassCabinPrice(rs.getInt(10));
+			flight.setEconomyClassCabinPrice(rs.getInt(11));
 			all.add(flight);
 		}
 		return all;
@@ -121,7 +123,10 @@ public class FlightDaoImpl implements IFlightDao{
 	@Override
 	public Flight findById(String id) throws SQLException {
 		Flight flight = null;
-		String sql = "SELECT * from T_Flight WHERE id=?";
+		String sql = "SELECT flightNum,airLine,planeType,departureCity,arrivalCity,"
+				+ "departureTime,arrivalTime,firstClassCabinPrice,"
+				+ "businessClassCabinPrice,economyClassCabinPrice from T_Flight"
+				+ " WHERE id=?";
 		conn = OracleDbManager.getConnection();
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, id);
@@ -132,13 +137,13 @@ public class FlightDaoImpl implements IFlightDao{
 			flight.setFlightNum(rs.getString(1));
 			flight.setAirline(rs.getString(2));
 			flight.setPlaneType(rs.getString(3));
-			flight.setDepatureCity(rs.getString(4));
+			flight.setDepartureCity(rs.getString(4));
 			flight.setArrivalCity(rs.getString(5));
 			flight.setDepartureTime(rs.getTimestamp(6));
 			flight.setArrivalTime(rs.getTimestamp(7));
-			flight.setFirstClassCabinPrice(rs.getInt(10));
-			flight.setBusinessClassCabinPrice(rs.getInt(11));
-			flight.setEconomyClassCabinPrice(rs.getInt(12));
+			flight.setFirstClassCabinPrice(rs.getInt(8));
+			flight.setBusinessClassCabinPrice(rs.getInt(9));
+			flight.setEconomyClassCabinPrice(rs.getInt(10));
 		}
 		return flight;
 	}
