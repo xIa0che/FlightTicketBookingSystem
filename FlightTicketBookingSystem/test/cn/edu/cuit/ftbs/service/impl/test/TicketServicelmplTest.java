@@ -1,6 +1,6 @@
 package cn.edu.cuit.ftbs.service.impl.test;
 
-import static org.junit.Assert.*;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -15,8 +15,8 @@ public class TicketServicelmplTest {
 	@Test
 	public void testAddTicket() throws Exception {
 		Flight flightinfo = new Flight("1");
-		Customer customer =new Customer("xiaodeng");
-		Ticket ticket = new Ticket("头等舱","3",flightinfo,customer);
+		Customer customer =new Customer("xiaoxing");
+		Ticket ticket = new Ticket("头等舱","6",flightinfo,customer);
 		ITicketService its = new TicketServicelmpl();
 		its.addTicket(ticket);
 	}
@@ -24,24 +24,28 @@ public class TicketServicelmplTest {
 	@Test
 	public void testDeleteTicket() {
 		ITicketService its = new TicketServicelmpl();
-		its.deleteTicket("xiaodeng");
+		its.deleteTicket("xiaoxing");
 	}
 
 	@Test
 	public void testUpdateTicket() {
 		ITicketService its = new TicketServicelmpl();
-		its.updateTicket("xiaodeng");
+		its.updateTicket("3");
 		System.out.println("chenggong");
 	}
 
 	@Test
 	public void testQueryTicket() {
+		List<Ticket> ticket;
 		ITicketService its = new TicketServicelmpl();
-		Ticket ticket = its.queryTicket("xiaodeng");
-		System.out.println(ticket.getSeatClass());
-		System.out.println(ticket.getTicketNum());
-		System.out.println(ticket.getCustomer().getUsername());
-		System.out.println(ticket.getFlightInfo().getId());
+		ticket = its.queryTicket("xiaoxing");
+		for(Ticket i: ticket){
+		System.out.println("i");
+		System.out.println(i.getSeatClass());
+		System.out.println(i.getTicketNum());
+		System.out.println(i.getCustomer().getUsername());
+		System.out.println(i.getFlightInfo().getId());
+		}
 		
 	}
 

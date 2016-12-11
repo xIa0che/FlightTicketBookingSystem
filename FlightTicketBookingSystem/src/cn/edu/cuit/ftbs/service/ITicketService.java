@@ -1,5 +1,7 @@
 package cn.edu.cuit.ftbs.service;
 
+import java.util.List;
+
 import cn.edu.cuit.ftbs.entity.Ticket;
 
 /**
@@ -33,5 +35,5 @@ public interface ITicketService {
 	 * @return 如果没有指定的顾客姓名，返回值为null，<br>
 	 * 如果有指定的雇员信息，则将所有的雇员信息包装到Ticket实例化对象之中返回。
 	 */
-	public Ticket queryTicket(String username);
+	public List<Ticket> queryTicket(String username);
 }

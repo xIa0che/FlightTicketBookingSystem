@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.edu.cuit.ftbs.dao.ITicketDao;
 import cn.edu.cuit.ftbs.entity.Ticket;
@@ -75,14 +77,14 @@ public class TicketDaolmpl implements ITicketDao {
 	}
 
 	@Override
-	public Ticket findByUsername(String username) throws SQLException{
+	public Ticket findByTicketNum(String ticketNum) throws SQLException{
 		Ticket ticket = null;
 		ICustomerService iCustomerService =new CustomerServiceImpl();
 		IFlightService iFlightService = new FlightServiceImpl();
-		String sql = "SELECT ticketNum,seatClass,id,username FROM T_Ticket WHERE username=?";
+		String sql = "SELECT ticketNum,seatClass,id,username FROM T_Ticket WHERE ticketNum=?";
 		conn = OracleDbManager.getConnection();
 		pstmt = conn.prepareStatement(sql);
-		this.pstmt.setString(1, username);
+		this.pstmt.setString(1, ticketNum);
 		ResultSet rs = this.pstmt.executeQuery();
 		if (rs.next()) {
 			ticket = new Ticket();
@@ -97,4 +99,31 @@ public class TicketDaolmpl implements ITicketDao {
 		}
 		return ticket;
 	}
+
+	@Override
+	public List<Ticket> findByUsername(String username) throws SQLException {
+		// TODO Auto-generated method stub
+		List<Ticket> all = new ArrayList<Ticket>();
+		ICustomerService iCustomerService =new CustomerServiceImpl();
+		IFlightService iFlightService = new FlightServiceImpl();
+		String sql = "SELECT ticketNum,seatClass,id,username FROM T_Ticket WHERE username=?";
+		conn = OracleDbManager.getConnection();
+		pstmt = conn.prepareStatement(sql);
+		this.pstmt.setString(1, username );
+		ResultSet rs = this.pstmt.executeQuery();
+		if (rs.next()) {
+			Ticket ticket = new Ticket();
+			ticket.setTicketNum(rs.getString(1));
+			ticket.setSeatClass(rs.getString(2));
+			ticket.setFlightInfo(iFlightService.queryFlight((rs.getString(3))));
+			try {
+				ticket.setCustomer(iCustomerService.qureyCustomer(rs.getString(4)));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			all.add(ticket);
+		}
+		return all;
+	}
+	
 }
