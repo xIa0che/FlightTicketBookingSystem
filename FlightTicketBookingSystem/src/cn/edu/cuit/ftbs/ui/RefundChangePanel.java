@@ -9,12 +9,13 @@ import javax.swing.table.DefaultTableModel;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import cn.edu.cuit.ftbs.entity.Customer;
+import cn.edu.cuit.ftbs.entity.Flight;
 import cn.edu.cuit.ftbs.entity.Ticket;
-import cn.edu.cuit.ftbs.service.ICustomerService;
+import cn.edu.cuit.ftbs.service.IFlightService;
 import cn.edu.cuit.ftbs.service.ITicketService;
+import cn.edu.cuit.ftbs.service.impl.FlightServiceImpl;
 import cn.edu.cuit.ftbs.service.impl.TicketServicelmpl;
 
-import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -26,12 +27,16 @@ import java.awt.Font;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.ListSelectionModel;
+import java.awt.event.ActionListener;
+import java.util.List;
+import java.awt.event.ActionEvent;
 
 public class RefundChangePanel extends JPanel {
 	private JTable table;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private Customer customer;
 	private ITicketService ticketService = new TicketServicelmpl();
+	private IFlightService flightService = new FlightServiceImpl();
 
 	/**
 	 * Create the panel.
@@ -53,7 +58,8 @@ public class RefundChangePanel extends JPanel {
 		table.setBackground(new Color(240, 250, 253));
 		table.setBorder(new MatteBorder(0, 1, 0, 1, (Color) new Color(64, 181, 226)));
 		table.setFont(new Font("宋体", Font.PLAIN, 19));
-		table.setModel(new DefaultTableModel(
+
+		/*	table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null},
 				{null, null, null},
@@ -64,7 +70,12 @@ public class RefundChangePanel extends JPanel {
 			new String[] {
 				"New column", "New column", "New column"
 			}
-		));
+		)); */
+
+		RefundChangeTableModel refundChangeTableModel =
+				new RefundChangeTableModel(ticketService.queryTicket(customer.getUsername()));
+		table.setModel(refundChangeTableModel);
+
 		scrollPane.setViewportView(table);
 
 		JPanel panel = new JPanel();
@@ -78,6 +89,7 @@ public class RefundChangePanel extends JPanel {
 		panel_1.add(horizontalStrut);
 
 		JButton button = new JButton("");
+
 		button.setBorder(new EmptyBorder(0, 0, 0, 0));
 		button.setIcon(new ImageIcon(RefundChangePanel.class.getResource("/cn/edu/cuit/ftbs/resource/nextStep.PNG")));
 		panel_1.add(button);
@@ -94,6 +106,23 @@ public class RefundChangePanel extends JPanel {
 
 		JRadioButton changeRadioButton = new JRadioButton("改签");
 		buttonGroup.add(changeRadioButton);
+
+
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (refundRadioButton.isSelected()) {
+					ticketService.deleteTicket(customer.getUsername());
+				}else if (changeRadioButton.isSelected()){
+					Ticket ticket =
+							ticketService.queryTicket(customer.getUsername());
+					List<Flight> flightList =
+							flightService.queryFlightByAirline(ticket.getFlightInfo().getAirline());
+					FlightDisplayFrame flightDisplayFrame = new FlightDisplayFrame(flightList);
+					flightDisplayFrame.setVisible(true);
+				}
+			}
+		});
+
 		panel_2.add(changeRadioButton);
 
 	}

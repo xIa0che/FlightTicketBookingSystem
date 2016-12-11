@@ -50,4 +50,11 @@ public interface IFlightService {
 	 * @return 查找成功返回对应id的航班对象，查找失败返回null
 	 */
 	public Flight queryFlight(String id);
+
+	/**
+	 * 根据航空公司查找航班
+	 * @param airline 航空公司名称
+	 * @return 返回符合条件的航班列表，没有符合条件的航班则返回null
+	 */
+	public List<Flight> queryFlightByAirline(String airline);
 }

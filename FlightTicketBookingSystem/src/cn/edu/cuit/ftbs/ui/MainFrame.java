@@ -28,7 +28,7 @@ import java.security.cert.TrustAnchor;
 import java.awt.event.ActionEvent;
 
 public class MainFrame extends JFrame {
-	private FlightQueryFrame flightQueryFrame = new FlightQueryFrame();
+	private FlightQueryFrame flightQueryFrame = null;
 	private JPanel contentPane;
 	private UserInfoFrame userInfoFrame = null;
 
@@ -53,6 +53,7 @@ public class MainFrame extends JFrame {
 	 */
 	public MainFrame(Customer customer) {
 		this.userInfoFrame = new UserInfoFrame(customer);
+		this.flightQueryFrame = new FlightQueryFrame(customer);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 500);

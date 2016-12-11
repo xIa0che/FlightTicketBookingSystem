@@ -18,12 +18,15 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
 
+import cn.edu.cuit.ftbs.entity.Customer;
+
 public class FlightQueryFrame extends JFrame {
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
+	/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -35,19 +38,19 @@ public class FlightQueryFrame extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public FlightQueryFrame() {
+	public FlightQueryFrame(Customer customer) {
 		setBounds(100, 100, 678, 454);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 
-		contentPane.add(new FlightQueryPanel(this), BorderLayout.CENTER);
+		contentPane.add(new FlightQueryPanel(this, customer), BorderLayout.CENTER);
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new MatteBorder(5, 6, 0, 6, (Color) new Color(0, 175, 199)));

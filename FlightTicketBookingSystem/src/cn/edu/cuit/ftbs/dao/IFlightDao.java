@@ -58,6 +58,7 @@ public interface IFlightDao {
 	 * 按照航空公司查找航班
 	 * @param airline 要搜索的航空公司名称
 	 * @return 返回该航空公司的航班列表
+	 * @throws SQLException 数据库异常
 	 */
-	public List<Flight> findByAirline(String airline);
+	public List<Flight> findByAirline(String airline) throws SQLException;
 }

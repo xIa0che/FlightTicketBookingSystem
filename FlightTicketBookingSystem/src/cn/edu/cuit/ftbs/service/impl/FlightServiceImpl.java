@@ -69,4 +69,15 @@ public class FlightServiceImpl implements IFlightService{
 		}
 		return null;
 	}
+
+	@Override
+	public List<Flight> queryFlightByAirline(String airline) {
+		try {
+			return dao.findByAirline(airline);
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "数据库错误", null, JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

@@ -62,4 +62,12 @@ public class FlightServiceImplTest {
 		System.out.println(flight.getFlightNum());
 	}
 
+	@Test
+	public void testQueryFlightByAirline(){
+		String airline = "中国国际航空公司";
+		List<Flight> flightList = iFlightService.queryFlightByAirline(airline);
+		for (Flight flight : flightList){
+			System.out.println(flight.getFlightNum());
+		}
+	}
 }

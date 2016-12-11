@@ -33,16 +33,13 @@ public class TicketDaolmpl implements ITicketDao {
 		pstmt.setString(2, ticket.getSeatClass());
 		String id=ticket.getFlightInfo().getId();
 		pstmt.setString(3, id);
-		System.out.println(ticket.getFlightInfo().getId());
 		String username = ticket.getCustomer().getUsername();
 		pstmt.setString(4,username );
-        System.out.println(ticket.getCustomer().getUsername());
 		if (pstmt.executeUpdate() > 0) {
 			OracleDbManager.closeConnection(pstmt, conn);
 			return true;
 		}
 		OracleDbManager.closeConnection(pstmt, conn);
-		System.out.println("false");
 		return false;
 	}
 

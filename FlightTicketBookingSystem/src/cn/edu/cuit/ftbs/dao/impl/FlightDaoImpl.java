@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.sun.xml.internal.bind.v2.model.core.ID;
 
 import cn.edu.cuit.ftbs.dao.IFlightDao;
 import cn.edu.cuit.ftbs.entity.Flight;
@@ -149,9 +150,33 @@ public class FlightDaoImpl implements IFlightDao{
 	}
 
 	@Override
-	public List<Flight> findByAirline(String airline) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Flight> findByAirline(String airline) throws SQLException {
+		Flight flight = null;
+		List<Flight> all = new ArrayList<Flight>();
+		String sql = "SELECT flightNum,planeType,departureCity,arrivalCity,"
+				+ "departureTime,arrivalTime,firstClassCabinPrice,"
+				+ "businessClassCabinPrice,economyClassCabinPrice,id from T_Flight"
+				+ " WHERE airline=?";
+		conn = OracleDbManager.getConnection();
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, airline);
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()){
+			flight = new Flight();
+			flight.setAirline(airline);;
+			flight.setFlightNum(rs.getString(1));
+			flight.setPlaneType(rs.getString(2));
+			flight.setDepartureCity(rs.getString(3));
+			flight.setArrivalCity(rs.getString(4));
+			flight.setDepartureTime(rs.getTimestamp(5));
+			flight.setArrivalTime(rs.getTimestamp(6));
+			flight.setFirstClassCabinPrice(rs.getInt(7));
+			flight.setBusinessClassCabinPrice(rs.getInt(8));
+			flight.setEconomyClassCabinPrice(rs.getInt(9));
+			flight.setId(rs.getString(10));
+			all.add(flight);
+		}
+		return all;
 	}
 
 }

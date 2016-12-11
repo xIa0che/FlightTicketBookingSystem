@@ -13,6 +13,7 @@ import cn.edu.cuit.ftbs.entity.Flight;
 public class FlightDisplayTableModel implements TableModel {
 	private List<Flight> flightList;
 	private String[] columnName = {"航班",
+								   "航空公司",
 			                       "出发城市",
 			                       "到达城市",
 								   "出发时间",
@@ -50,12 +51,14 @@ public class FlightDisplayTableModel implements TableModel {
 		case 0:
 			return flight.getFlightNum();
 		case 1:
-			return flight.getDepartureCity();
+			return flight.getAirline();
 		case 2:
-			return flight.getArrivalCity();
+			return flight.getDepartureCity();
 		case 3:
-			return dateFormat.format(flight.getDepartureTime());
+			return flight.getArrivalCity();
 		case 4:
+			return dateFormat.format(flight.getDepartureTime());
+		case 5:
 			String value = dateFormat.format(flight.getArrivalTime());
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			String beginDateString = df.format(flight.getDepartureTime());
@@ -77,13 +80,13 @@ public class FlightDisplayTableModel implements TableModel {
 				value = value + " +" + betweenDate + '天';
 			}
 			return value;
-		case 5:
-			return flight.getPlaneType();
 		case 6:
-			return flight.getFirstClassCabinPrice();
+			return flight.getPlaneType();
 		case 7:
-			return flight.getBusinessClassCabinPrice();
+			return flight.getFirstClassCabinPrice();
 		case 8:
+			return flight.getBusinessClassCabinPrice();
+		case 9:
 			return flight.getEconomyClassCabinPrice();
 		default:
 			return null;
@@ -92,9 +95,6 @@ public class FlightDisplayTableModel implements TableModel {
 
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
-		if (columnIndex == 3 || columnIndex == 4){
-			return String.class;
-		}
 		return getValueAt(0, columnIndex).getClass();
 	}
 
