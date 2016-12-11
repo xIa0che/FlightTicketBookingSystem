@@ -41,9 +41,9 @@ public class TicketServicelmpl implements ITicketService {
 	}
 
 	@Override
-	public boolean updateTicket(String TicketNum,Ticket ticket) {
+	public boolean updateTicket(Ticket ticket) {
 		try {
-			return dao.doUpdate(TicketNum,ticket);
+			return dao.doUpdate(ticket);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "数据库错误", null, JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();

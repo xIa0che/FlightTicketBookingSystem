@@ -32,8 +32,8 @@ public class TicketServicelmplTest {
 		ITicketService its = new TicketServicelmpl();
 		Flight flightinfo = new Flight("1");
 		Customer customer =new Customer("xiaodeng");
-		Ticket ticket = new Ticket("头等舱","7",flightinfo,customer);
-		its.updateTicket("3",ticket);
+		Ticket ticket = new Ticket("经济舱","7",flightinfo,customer);
+		its.updateTicket(ticket);
 	}
 
 	@Test

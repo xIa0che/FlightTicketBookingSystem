@@ -25,11 +25,10 @@ public interface ITicketService {
 	public boolean deleteTicket(String username);
 	/**
 	 * 执行根据用户名更新机票
-	 * @param TicketNum 待修改机票的编号
 	 * @param ticket 包含新数据的对象
 	 * @return 如果修改成功，返回true，如果数据不存在或修改失败，返回false
 	 */
-	public boolean updateTicket(String TicketNum,Ticket ticket);
+	public boolean updateTicket(Ticket ticket);
 	/**
 	 * 执行查询机票操作
 	 * @param username 要查询机票的用户名 

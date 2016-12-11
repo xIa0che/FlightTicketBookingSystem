@@ -20,12 +20,11 @@ public interface ITicketDao{
 	public boolean doCreate(Ticket ticket) throws SQLException;
 	/**
 	 * 执行数据的更新操作
-	 * @param ticketNum 待修改机票的编号
 	 * @param ticket 包含新数据的ticket对象
 	 * @return 如果更新数据成功返回true，否则返回false
 	 * @throws SQLException 数据库异常
 	 */
-	public boolean doUpdate(String ticketNum,Ticket ticket) throws SQLException;
+	public boolean doUpdate(Ticket ticket) throws SQLException;
 	/**
 	 * 执行数据的删除操作
 	 * @param username 要删除机票的用户名
