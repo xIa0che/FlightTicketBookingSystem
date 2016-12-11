@@ -15,9 +15,9 @@ import cn.edu.cuit.ftbs.service.ITicketService;
 public class TicketServicelmpl implements ITicketService {
 	ITicketDao dao = new TicketDaolmpl();       
 	@Override
-	public boolean addTicket(Ticket ticket) throws Exception {
+	public boolean addTicket(Ticket ticket) {
 		try {
-			if (dao.findByTicketNum(ticket.getTicketNum()) == null){
+			if (dao.findByUsername(ticket.getCustomer().getUsername()) == null){
 				return dao.doCreate(ticket);
 			}
 		} catch (Exception e) {
@@ -28,7 +28,7 @@ public class TicketServicelmpl implements ITicketService {
 	}
 
 	@Override
-	public boolean deleteTicket(String ticketNum) throws Exception {
+	public boolean deleteTicket(String ticketNum){
 		try {
 			return dao.doRemove(ticketNum);
 		} catch (Exception e) {
@@ -39,7 +39,7 @@ public class TicketServicelmpl implements ITicketService {
 	}
 
 	@Override
-	public boolean updateTicket(Ticket ticket) throws Exception {
+	public boolean updateTicket(Ticket ticket) {
 		try {
 			return dao.doUpdate(ticket);
 		} catch (Exception e) {
@@ -50,31 +50,14 @@ public class TicketServicelmpl implements ITicketService {
 	}
 
 	@Override
-	public Ticket queryTicket(String ticketNum) throws Exception {
+	public Ticket queryTicket(String username) {
 		try {
-			return dao.findByTicketNum(ticketNum);
+			return dao.findByUsername(username);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "数据库错误", null, JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 		return null;
-	}
-	@Override
-	public boolean bookTicket(String customerId, Ticket ticket) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean returnTicket(String CustomerId, Ticket ticket) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean changTicket(String CustomerId, Ticket oldTicket, Ticket newTicket) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
 	}
 }
 
