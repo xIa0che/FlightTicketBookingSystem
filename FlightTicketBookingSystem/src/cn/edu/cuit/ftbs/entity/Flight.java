@@ -7,6 +7,7 @@ import java.util.Date;
  * @author xIa0che
  *
  */
+
 public class Flight {
 	String id;
 	String flightNum;
