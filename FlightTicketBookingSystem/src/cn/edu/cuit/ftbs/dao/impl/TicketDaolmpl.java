@@ -78,14 +78,14 @@ public class TicketDaolmpl implements ITicketDao {
 	}
 
 	@Override
-	public Ticket findByTicketNum(String ticketNum) throws SQLException{
+	public Ticket findByUsername(String username) throws SQLException{
 		Ticket ticket = null;
 		ICustomerService iCustomerService =new CustomerServiceImpl();
 		IFlightService iFlightService = new FlightServiceImpl();
 		String sql = "SELECT ticketNum,seatClass,id,username FROM T_Ticket WHERE ticketNum=?";
 		conn = OracleDbManager.getConnection();
 		pstmt = conn.prepareStatement(sql);
-		this.pstmt.setString(1, ticketNum);
+		this.pstmt.setString(1, username);
 		//TODO 数据库错误，无效列索引
 		ResultSet rs = this.pstmt.executeQuery();
 		if (rs.next()) {

@@ -25,17 +25,17 @@ public interface ITicketDao{
 	public boolean doUpdate(Ticket ticket) throws SQLException;
 	/**
 	 * 执行数据的删除操作
-	 * @param ticketNum 要删除机票的编号ticketNum
+	 * @param username 要删除机票的顾客姓名
 	 * @return 如果删除数据成功则返回true，否则返回false
 	 * @throws SQLException 数据库异常
 	 */
-	public boolean doRemove(String ticketNum) throws SQLException;
+	public boolean doRemove(String username) throws SQLException;
 	/**
 	 * 根据顾客姓名查找机票
-	 * @param ticketNum 要查找机票的编号
+	 * @param username 要查找机票的顾客姓名
 	 * @return 如果没有指定的雇员编号，返回值为null，<br>
 	 * 如果有指定的雇员信息，则将所有的雇员信息包装到Ticket实例化对象之中返回。
 	 * @throws Exception SQLException 数据库异常
 	 */
-	public Ticket findByTicketNum(String ticketNum) throws SQLException;
+	public Ticket findByUsername(String username) throws SQLException;
 }

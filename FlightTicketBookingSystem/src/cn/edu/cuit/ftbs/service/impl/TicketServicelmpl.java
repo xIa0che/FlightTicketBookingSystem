@@ -17,7 +17,7 @@ public class TicketServicelmpl implements ITicketService {
 	@Override
 	public boolean addTicket(Ticket ticket) {
 		try {
-			if (dao.findByTicketNum(ticket.getTicketNum()) == null){
+			if (dao.findByUsername(ticket.getCustomer().getUsername()) == null){
 				return dao.doCreate(ticket);
 			}
 		} catch (Exception e) {
@@ -50,9 +50,9 @@ public class TicketServicelmpl implements ITicketService {
 	}
 
 	@Override
-	public Ticket queryTicket(String ticketNum) {
+	public Ticket queryTicket(String username) {
 		try {
-			return dao.findByTicketNum(ticketNum);
+			return dao.findByUsername(username);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "数据库错误", null, JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
