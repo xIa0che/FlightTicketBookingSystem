@@ -10,7 +10,7 @@ import cn.edu.cuit.ftbs.entity.Ticket;
  */
 public interface ITicketDao{
 	/**
-	 * 执行数据的增加操作 ִ
+	 * 执行数据的增加操 ִ
 	 * @param ticket 包含要增加数据的ticket对象
 	 * @return 如果增加数据成功返回true，否则返回false
 	 * @throws SQLException 数据库异常

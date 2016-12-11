@@ -32,18 +32,13 @@ public class TicketDaolmpl implements ITicketDao {
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, ticket.getTicketNum());
 		pstmt.setString(2, ticket.getSeatClass());
-		String id=ticket.getFlightInfo().getId();
-		pstmt.setString(3, id);
-		System.out.println(ticket.getFlightInfo().getId());
-		String username = ticket.getCustomer().getUsername();
-		pstmt.setString(4,username );
-        System.out.println(ticket.getCustomer().getUsername());
+		pstmt.setString(3, ticket.getFlightInfo().getId());
+		pstmt.setString(4,ticket.getCustomer().getUsername());
 		if (pstmt.executeUpdate() > 0) {
 			OracleDbManager.closeConnection(pstmt, conn);
 			return true;
 		}
 		OracleDbManager.closeConnection(pstmt, conn);
-		System.out.println("false");
 		return false;
 	}
 
@@ -73,11 +68,9 @@ public class TicketDaolmpl implements ITicketDao {
 		this.pstmt.setString(1, username);
 		if (pstmt.executeUpdate() > 0) {
 			OracleDbManager.closeConnection(pstmt, conn);
-			System.out.println("成功");
 			return true;
 		}
 		OracleDbManager.closeConnection(pstmt, conn);
-		System.out.println("失败");
 		return false;
 	}
 
@@ -90,7 +83,6 @@ public class TicketDaolmpl implements ITicketDao {
 		conn = OracleDbManager.getConnection();
 		pstmt = conn.prepareStatement(sql);
 		this.pstmt.setString(1, username);
-		//TODO 数据库错误，无效列索引
 		ResultSet rs = this.pstmt.executeQuery();
 		if (rs.next()) {
 			ticket = new Ticket();
@@ -100,7 +92,6 @@ public class TicketDaolmpl implements ITicketDao {
 			try {
 				ticket.setCustomer(iCustomerService.qureyCustomer(rs.getString(4)));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
