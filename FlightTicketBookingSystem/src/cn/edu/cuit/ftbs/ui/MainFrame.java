@@ -31,6 +31,7 @@ public class MainFrame extends JFrame {
 	private FlightQueryFrame flightQueryFrame = null;
 	private JPanel contentPane;
 	private UserInfoFrame userInfoFrame = null;
+	private RefundChangeFrame refundChangeFrame = null;
 
 	/**
 	 * Launch the application.
@@ -104,6 +105,8 @@ public class MainFrame extends JFrame {
 		JButton btnNewButton_1 = new JButton("退票改签");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				refundChangeFrame = new RefundChangeFrame(customer);
+				refundChangeFrame.setVisible(true);
 			}
 		});
 

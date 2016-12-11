@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
@@ -28,8 +29,16 @@ import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.ListSelectionModel;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class RefundChangePanel extends JPanel {
 	private JTable table;
@@ -37,6 +46,8 @@ public class RefundChangePanel extends JPanel {
 	private Customer customer;
 	private ITicketService ticketService = new TicketServicelmpl();
 	private IFlightService flightService = new FlightServiceImpl();
+	private List<Ticket> ticketList = null;
+	private JTextField changeTextField;
 
 	/**
 	 * Create the panel.
@@ -72,9 +83,28 @@ public class RefundChangePanel extends JPanel {
 			}
 		)); */
 
+		ticketList = ticketService.queryTicket(customer.getUsername());
 		RefundChangeTableModel refundChangeTableModel =
-				new RefundChangeTableModel(ticketService.queryTicket(customer.getUsername()));
+				new RefundChangeTableModel(ticketList);
 		table.setModel(refundChangeTableModel);
+
+		TableColumn column0 = table.getColumnModel().getColumn(0);
+		column0.setPreferredWidth(145);
+		TableColumn column1 = table.getColumnModel().getColumn(1);
+		column1.setPreferredWidth(115);
+		TableColumn column3 = table.getColumnModel().getColumn(3);
+		column3.setPreferredWidth(160);
+		TableColumn column4 = table.getColumnModel().getColumn(4);
+		column4.setPreferredWidth(40);
+		TableColumn column5 = table.getColumnModel().getColumn(5);
+		column5.setPreferredWidth(50);
+		TableColumn column6 = table.getColumnModel().getColumn(6);
+		column6.setPreferredWidth(50);
+		TableColumn column8 = table.getColumnModel().getColumn(8);
+		column8.setPreferredWidth(110);
+		TableColumn column9 = table.getColumnModel().getColumn(9);
+		column9.setPreferredWidth(100);
+
 
 		scrollPane.setViewportView(table);
 
@@ -101,29 +131,55 @@ public class RefundChangePanel extends JPanel {
 		buttonGroup.add(refundRadioButton);
 		panel_2.add(refundRadioButton);
 
-		Component horizontalStrut_1 = Box.createHorizontalStrut(100);
+		Component horizontalStrut_1 = Box.createHorizontalStrut(60);
 		panel_2.add(horizontalStrut_1);
 
 		JRadioButton changeRadioButton = new JRadioButton("改签");
 		buttonGroup.add(changeRadioButton);
 
+		panel_2.add(changeRadioButton);
+
+		Component horizontalStrut_2 = Box.createHorizontalStrut(20);
+		panel_2.add(horizontalStrut_2);
+
+		JLabel label = new JLabel("改签日期：");
+		panel_2.add(label);
+
+		changeTextField = new JTextField();
+		panel_2.add(changeTextField);
+		changeTextField.setColumns(8);
 
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (refundRadioButton.isSelected()) {
-					ticketService.deleteTicket(customer.getUsername());
+					if (ticketService.deleteTicket(customer.getUsername())){
+						JOptionPane.showMessageDialog(null, "退票成功", null, JOptionPane.ERROR_MESSAGE);
+					}else {
+						JOptionPane.showMessageDialog(null, "退票失败", null, JOptionPane.ERROR_MESSAGE);
+					}
+					return;
 				}else if (changeRadioButton.isSelected()){
-					Ticket ticket =
-							ticketService.queryTicket(customer.getUsername());
+					Ticket ticket = ticketList.get(table.getSelectedRow());
+					Flight flight = ticket.getFlightInfo();
+					String departureCity = flight.getDepartureCity();
+					String arrivalCity = flight.getArrivalCity();
+					String departureDateString = changeTextField.getText();
+					SimpleDateFormat df = new SimpleDateFormat("yy-MM-dd");
+					Date departureTime = null;
+					try {
+						departureTime = df.parse(departureDateString);
+					} catch (ParseException e1) {
+						e1.printStackTrace();
+					}
+					String airline = flight.getAirline();
 					List<Flight> flightList =
-							flightService.queryFlightByAirline(ticket.getFlightInfo().getAirline());
-					FlightDisplayFrame flightDisplayFrame = new FlightDisplayFrame(flightList);
+							flightService.queryFlight(departureCity, arrivalCity, departureTime, airline);
+					//ticketService.deleteTicket(ticket.getTicketNum());
+					FlightDisplayFrame flightDisplayFrame = new FlightDisplayFrame(flightList, customer);
 					flightDisplayFrame.setVisible(true);
 				}
 			}
 		});
-
-		panel_2.add(changeRadioButton);
 
 	}
 

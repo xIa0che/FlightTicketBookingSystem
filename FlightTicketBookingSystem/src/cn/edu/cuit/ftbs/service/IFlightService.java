@@ -35,7 +35,7 @@ public interface IFlightService {
 	public boolean updateFlight(Flight flight);
 
 	/**
-	 * 按照条件查找航班
+	 * 按照出发城市，到达城市，出发时间查找航班
 	 * @param departureCity 出发城市
 	 * @param arrivalCity 到达城市
 	 * @param departureTime 出发时间
@@ -43,6 +43,18 @@ public interface IFlightService {
 	 */
 	public List<Flight> queryFlight(String departureCity,
 			String arrivalCity, Date departureTime);
+
+
+	/**
+	 * 按照出发城市，到达城市，出发时间，航空公司查找航班
+	 * @param departureCity 出发城市
+	 * @param arrivalCity 到达城市
+	 * @param departureTime 出发时间
+	 * @param airline 航空公司名称
+	 * @return 返回符合条件的航班列表，没有符合条件的航班则返回null
+	 */
+	public List<Flight> queryFlight(String departureCity,
+			String arrivalCity, Date departureTime, String airline);
 
 	/**
 	 * 根据id查找航班

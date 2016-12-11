@@ -60,6 +60,17 @@ public class FlightServiceImpl implements IFlightService{
 		return null;
 	}
 
+	@Override
+	public List<Flight> queryFlight(String departureCity, String arrivalCity, Date departureTime, String airline) {
+		try {
+			return dao.findByCondition(departureCity, arrivalCity, departureTime, airline);
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "数据库错误", null, JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	public Flight queryFlight(String id) {
 		try {
 			return dao.findById(id);
@@ -80,4 +91,5 @@ public class FlightServiceImpl implements IFlightService{
 		}
 		return null;
 	}
+
 }

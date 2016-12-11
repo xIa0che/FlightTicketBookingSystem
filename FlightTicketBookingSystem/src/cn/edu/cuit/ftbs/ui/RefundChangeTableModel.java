@@ -14,6 +14,7 @@ import cn.edu.cuit.ftbs.entity.Ticket;
 public class RefundChangeTableModel implements TableModel {
 	private List<Ticket> ticketList;
 	private String[] columnName = { "机票编号",
+									"日期",
 									"航班",
 									"航空公司",
 									"机型",
@@ -46,24 +47,27 @@ public class RefundChangeTableModel implements TableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		Ticket ticket = ticketList.get(rowIndex);
 		Flight flight = ticket.getFlightInfo();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+		SimpleDateFormat dateFormatTime = new SimpleDateFormat("HH:mm");
+		SimpleDateFormat dateFormatDate = new SimpleDateFormat("yyyy/MM/dd");
 		switch (columnIndex) {
 		case 0:
 			return ticket.getTicketNum();
 		case 1:
-			return flight.getFlightNum();
+			return dateFormatDate.format(flight.getDepartureTime());
 		case 2:
-			return flight.getAirline();
+			return flight.getFlightNum();
 		case 3:
-			return flight.getPlaneType();
+			return flight.getAirline();
 		case 4:
-			return flight.getDepartureCity();
+			return flight.getPlaneType();
 		case 5:
-			return flight.getArrivalCity();
+			return flight.getDepartureCity();
 		case 6:
-			return dateFormat.format(flight.getDepartureTime());
+			return flight.getArrivalCity();
 		case 7:
-			String value = dateFormat.format(flight.getArrivalTime());
+			return dateFormatTime.format(flight.getDepartureTime());
+		case 8:
+			String value = dateFormatTime.format(flight.getArrivalTime());
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			String beginDateString = df.format(flight.getDepartureTime());
 			Date beginDate = null;
@@ -84,7 +88,7 @@ public class RefundChangeTableModel implements TableModel {
 				value = value + " +" + betweenDate + '天';
 			}
 			return value;
-		case 8:
+		case 9:
 			int price = 0;
 			String cabin = null;
 			if (ticket.getSeatClass().equals("头等舱")) {
