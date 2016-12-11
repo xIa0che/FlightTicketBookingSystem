@@ -38,7 +38,7 @@ public class TicketServicelmplTest {
 	public void testQueryTicket() {
 		List<Ticket> ticket;
 		ITicketService its = new TicketServicelmpl();
-		ticket = its.queryTicket("xiaoxing");
+		ticket = its.queryTicket("xiaodeng");
 		for(Ticket i: ticket){
 		System.out.println("i");
 		System.out.println(i.getSeatClass());

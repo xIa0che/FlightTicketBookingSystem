@@ -111,7 +111,7 @@ public class TicketDaolmpl implements ITicketDao {
 		pstmt = conn.prepareStatement(sql);
 		this.pstmt.setString(1, username );
 		ResultSet rs = this.pstmt.executeQuery();
-		if (rs.next()) {
+		while (rs.next()) {
 			Ticket ticket = new Ticket();
 			ticket.setTicketNum(rs.getString(1));
 			ticket.setSeatClass(rs.getString(2));
