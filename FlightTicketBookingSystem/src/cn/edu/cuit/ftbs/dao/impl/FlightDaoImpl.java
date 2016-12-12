@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 import cn.edu.cuit.ftbs.dao.IFlightDao;
 import cn.edu.cuit.ftbs.entity.Flight;
 import cn.edu.cuit.ftbs.util.OracleDbManager;
