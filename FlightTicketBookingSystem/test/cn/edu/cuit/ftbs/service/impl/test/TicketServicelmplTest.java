@@ -24,7 +24,7 @@ public class TicketServicelmplTest {
 	@Test
 	public void testDeleteTicket() {
 		ITicketService its = new TicketServicelmpl();
-		its.deleteTicket("7");
+		its.deleteTicket("4");
 	}
 
 	@Test

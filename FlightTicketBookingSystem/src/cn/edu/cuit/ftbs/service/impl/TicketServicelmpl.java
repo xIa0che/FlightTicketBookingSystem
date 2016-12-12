@@ -30,9 +30,9 @@ public class TicketServicelmpl implements ITicketService {
 	}
 
 	@Override
-	public boolean deleteTicket(String username){
+	public boolean deleteTicket(String ticketNum){
 		try {
-			return dao.doRemove(username);
+			return dao.doRemove(ticketNum);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "数据库错误", null, JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
