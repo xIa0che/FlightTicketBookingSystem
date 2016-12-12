@@ -24,7 +24,7 @@ public class TicketServicelmplTest {
 	@Test
 	public void testDeleteTicket() {
 		ITicketService its = new TicketServicelmpl();
-		its.deleteTicket("xiaoxing");
+		its.deleteTicket("7");
 	}
 
 	@Test
@@ -42,7 +42,6 @@ public class TicketServicelmplTest {
 		ITicketService its = new TicketServicelmpl();
 		ticket = its.queryTicket("xiaodeng");
 		for(Ticket i: ticket){
-		System.out.println("i");
 		System.out.println(i.getSeatClass());
 		System.out.println(i.getTicketNum());
 		System.out.println(i.getCustomer().getUsername());
