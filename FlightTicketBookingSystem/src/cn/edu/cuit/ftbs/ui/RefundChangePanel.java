@@ -151,15 +151,16 @@ public class RefundChangePanel extends JPanel {
 
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int index = table.getSelectedRow();
+				Ticket ticket = ticketList.get(index);
 				if (refundRadioButton.isSelected()) {
-					if (ticketService.deleteTicket(customer.getUsername())){
-						JOptionPane.showMessageDialog(null, "退票成功", null, JOptionPane.ERROR_MESSAGE);
+					if (ticketService.deleteTicket(ticket.getTicketNum())){
+						JOptionPane.showMessageDialog(null, "退票成功", null, JOptionPane.INFORMATION_MESSAGE);
 					}else {
 						JOptionPane.showMessageDialog(null, "退票失败", null, JOptionPane.ERROR_MESSAGE);
 					}
 					return;
 				}else if (changeRadioButton.isSelected()){
-					Ticket ticket = ticketList.get(table.getSelectedRow());
 					Flight flight = ticket.getFlightInfo();
 					String departureCity = flight.getDepartureCity();
 					String arrivalCity = flight.getArrivalCity();
