@@ -41,7 +41,6 @@ public class Customer {
 
 	public Customer(String username) {
 		this.username=username;
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getId() {
