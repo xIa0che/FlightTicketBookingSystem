@@ -63,11 +63,11 @@ public class TicketDaolmpl implements ITicketDao {
 	}
 
 	@Override
-	public boolean doRemove(String username) throws SQLException {
-		String sql = "DELETE FROM T_Ticket WHERE username=?";
+	public boolean doRemove(String ticketNum) throws SQLException {
+		String sql = "DELETE FROM T_Ticket WHERE ticketNum=?";
 		conn = OracleDbManager.getConnection();
 		pstmt = conn.prepareStatement(sql);
-		this.pstmt.setString(1, username);
+		this.pstmt.setString(1, ticketNum);
 		if (pstmt.executeUpdate() > 0) {
 			OracleDbManager.closeConnection(pstmt, conn);
 			return true;

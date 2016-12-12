@@ -27,11 +27,11 @@ public interface ITicketDao{
 	public boolean doUpdate(Ticket ticket) throws SQLException;
 	/**
 	 * 执行数据的删除操作
-	 * @param username 要删除机票的用户名
+	 * @param ticketNum 要删除机票的编号
 	 * @return 如果删除数据成功则返回true，否则返回false
 	 * @throws SQLException 数据库异常
 	 */
-	public boolean doRemove(String username) throws SQLException;
+	public boolean doRemove(String ticketNum) throws SQLException;
 	/**
 	 * 根据机票编号查找机票
 	 * @param ticketnum 待查找机票的机票编号
