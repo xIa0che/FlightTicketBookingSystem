@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import cn.edu.cuit.ftbs.entity.Flight;
@@ -129,6 +130,10 @@ public class RefundChangeTableModel implements TableModel {
 	@Override
 	public void removeTableModelListener(TableModelListener l) {
 
+	}
+
+	public void removeRow(int row) {
+		ticketList.remove(row);
 	}
 
 }
