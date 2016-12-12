@@ -56,10 +56,28 @@ public class FlightServiceImplTest {
 	}
 
 	@Test
+	public void testQueryFlightAddAirline(){
+		List<Flight> flightList;
+		flightList =
+				iFlightService.queryFlight("北京", "成都", departureTime, "中国国际航空公司");
+		for (Flight i : flightList){
+			System.out.println(i.getId());
+		}
+	}
+
+	@Test
 	public void testQueryFlightByid(){
 		String id = "CA41102016-12-17";
 		Flight flight = iFlightService.queryFlight(id);
 		System.out.println(flight.getFlightNum());
 	}
 
+	@Test
+	public void testQueryFlightByAirline(){
+		String airline = "中国国际航空公司";
+		List<Flight> flightList = iFlightService.queryFlightByAirline(airline);
+		for (Flight flight : flightList){
+			System.out.println(flight.getFlightNum());
+		}
+	}
 }

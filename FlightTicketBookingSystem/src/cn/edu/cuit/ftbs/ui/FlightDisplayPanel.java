@@ -8,7 +8,10 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
 
+import cn.edu.cuit.ftbs.entity.Customer;
 import cn.edu.cuit.ftbs.entity.Flight;
 import cn.edu.cuit.ftbs.entity.Ticket;
 import cn.edu.cuit.ftbs.service.ITicketService;
@@ -38,10 +41,7 @@ public class FlightDisplayPanel extends JPanel {
 	private JTable table;
 	private List<Flight> flightList;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private Date date = new Date();
-	private SimpleDateFormat dataFormat = new SimpleDateFormat("yyyymmdd");
-	private String flightNum = dataFormat.format(date);
-	private long num = 0;
+	private Customer customer = null;
 
 	/*
 	 * private ITicketService iTicketService = new TicketServiceImpl(); private
@@ -50,8 +50,9 @@ public class FlightDisplayPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public FlightDisplayPanel(List<Flight> flightList) {
+	public FlightDisplayPanel(List<Flight> flightList, Customer customer) {
 		this.flightList = flightList;
+		this.customer = customer;
 
 		setBackground(Color.WHITE);
 
@@ -85,6 +86,12 @@ public class FlightDisplayPanel extends JPanel {
 
 		FlightDisplayTableModel flightDisplayTableModel = new FlightDisplayTableModel(flightList);
 		table.setModel(flightDisplayTableModel);
+
+		TableColumn column1 = table.getColumnModel().getColumn(1);
+		column1.setPreferredWidth(150);
+		TableColumn column5 = table.getColumnModel().getColumn(5);
+		column5.setPreferredWidth(125);
+
 
 		scrollPane.setViewportView(table);
 		setLayout(new BorderLayout(0, 0));
@@ -130,16 +137,19 @@ public class FlightDisplayPanel extends JPanel {
 				} else if (radioButton3.isSelected()) {
 					ticket.setSeatClass("经济舱");
 				}
-				num = num + 1;
-				flightNum = flightNum + num;
-				ticket.setTicketNum(flightNum);
+				Date date = new Date();
+				ticket.setTicketNum(Long.toString(date.getTime()));
+				ticket.setCustomer(customer);
 				try {
-					iTicketService.addTicket(ticket);
+					if (iTicketService.addTicket(ticket)){
+						JOptionPane.showMessageDialog(null, "机票预订成功", null, JOptionPane.PLAIN_MESSAGE);
+						return;
+					};
 				} catch (Exception e1) {
-
 					e1.printStackTrace();
 				}
-				JOptionPane.showMessageDialog(null, "机票预订成功", null, JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "订票失败", null, JOptionPane.PLAIN_MESSAGE);
+				return;
 			}
 		});
 		buttonPanel.add(nextStepButton);

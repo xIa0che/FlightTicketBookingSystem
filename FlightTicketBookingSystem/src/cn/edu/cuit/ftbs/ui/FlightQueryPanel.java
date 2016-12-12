@@ -10,6 +10,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import cn.edu.cuit.ftbs.entity.Customer;
 import cn.edu.cuit.ftbs.entity.Flight;
 import cn.edu.cuit.ftbs.service.IFlightService;
 import cn.edu.cuit.ftbs.service.impl.FlightServiceImpl;
@@ -40,11 +41,14 @@ public class FlightQueryPanel extends JPanel {
 	private JTextFieldWithIcon departureTimeTextField;
 	private JTextFieldWithIcon returnDateTextField;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private Customer customer = null;
 
 	/**
 	 * Create the panel.
 	 */
-	public FlightQueryPanel(JFrame flightQueryFrame) {
+	public FlightQueryPanel(JFrame flightQueryFrame, Customer customer) {
+		this.customer = customer;
+
 		setOpaque(false);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(new BorderLayout(0, 0));
@@ -168,8 +172,20 @@ public class FlightQueryPanel extends JPanel {
 		bookbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String departureCity = departureCitytextField.getText();
+				if (departureCity.equals("")){
+					JOptionPane.showMessageDialog(null, "请输入出发城市", null, JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 				String arrivalCity = arrivalCitytextField.getText();
+				if (arrivalCity.equals("")){
+					JOptionPane.showMessageDialog(null, "请输入到达城市", null, JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 				String departureTime = departureTimeTextField.getText();
+				if (departureTime.equals("")){
+					JOptionPane.showMessageDialog(null, "请输入出发日期", null, JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 				SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
 				Date nowDate = new Date();
 				String nowDateString = ft.format(nowDate);
@@ -193,6 +209,10 @@ public class FlightQueryPanel extends JPanel {
 				flightList.addAll(iFlightService.queryFlight(departureCity, arrivalCity, departureDate));
 				if (roundTripradioButton.isSelected()) {
 					String returnTime = returnDateTextField.getText();
+					if (returnTime.equals("")) {
+						JOptionPane.showMessageDialog(null, "请输入返回日期", null, JOptionPane.ERROR_MESSAGE);
+						return;
+					}
 					Date returnDate = null;
 					try {
 						returnDate = ft.parse(returnTime);
@@ -203,9 +223,9 @@ public class FlightQueryPanel extends JPanel {
 						JOptionPane.showMessageDialog(null, "请选择正确的日期", "日期错误", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
-					flightList.addAll(iFlightService.queryFlight(arrivalCity, departureCity, departureDate));
+					flightList.addAll(iFlightService.queryFlight(arrivalCity, departureCity, returnDate));
 				}
-				FlightDisplayFrame flightDisplayFrame = new FlightDisplayFrame(flightList);
+				FlightDisplayFrame flightDisplayFrame = new FlightDisplayFrame(flightList, customer);
 				flightDisplayFrame.setVisible(true);
 				flightQueryFrame.setVisible(false);
 			}

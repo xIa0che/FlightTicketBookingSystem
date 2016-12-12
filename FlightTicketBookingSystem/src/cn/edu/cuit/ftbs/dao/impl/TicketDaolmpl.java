@@ -125,5 +125,5 @@ public class TicketDaolmpl implements ITicketDao {
 		}
 		return all;
 	}
-	
+
 }
