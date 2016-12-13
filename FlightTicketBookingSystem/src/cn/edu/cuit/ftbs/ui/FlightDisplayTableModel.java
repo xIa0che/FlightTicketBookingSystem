@@ -6,11 +6,12 @@ import java.util.Date;
 import java.util.List;
 
 import javax.swing.event.TableModelListener;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
 import cn.edu.cuit.ftbs.entity.Flight;
 
-public class FlightDisplayTableModel implements TableModel {
+public class FlightDisplayTableModel extends AbstractTableModel {
 	private List<Flight> flightList;
 	private String[] columnName = {"航班",
 								   "航空公司",
@@ -101,18 +102,6 @@ public class FlightDisplayTableModel implements TableModel {
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		return false;
-	}
-
-	@Override
-	public void addTableModelListener(TableModelListener l) {
-	}
-
-	@Override
-	public void removeTableModelListener(TableModelListener l) {
-	}
-
-	@Override
-	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 	}
 
 }

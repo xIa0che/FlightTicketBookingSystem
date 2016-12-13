@@ -52,7 +52,7 @@ public class RefundChangePanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public RefundChangePanel(Customer customer) {
+	public RefundChangePanel(Customer customer, RefundChangeFrame refundChangeFrame) {
 		this.customer = customer;
 
 		setLayout(new BorderLayout(0, 0));
@@ -155,6 +155,7 @@ public class RefundChangePanel extends JPanel {
 				Ticket ticket = ticketList.get(index);
 				if (refundRadioButton.isSelected()) {
 					if (ticketService.deleteTicket(ticket.getTicketNum())){
+						refundChangeTableModel.removeRow(index);
 						JOptionPane.showMessageDialog(null, "退票成功", null, JOptionPane.INFORMATION_MESSAGE);
 					}else {
 						JOptionPane.showMessageDialog(null, "退票失败", null, JOptionPane.ERROR_MESSAGE);
@@ -170,14 +171,16 @@ public class RefundChangePanel extends JPanel {
 					try {
 						departureTime = df.parse(departureDateString);
 					} catch (ParseException e1) {
-						e1.printStackTrace();
+						JOptionPane.showMessageDialog(null, "请输入正确的日期格式", null, JOptionPane.ERROR_MESSAGE);
+						return;
 					}
 					String airline = flight.getAirline();
 					List<Flight> flightList =
 							flightService.queryFlight(departureCity, arrivalCity, departureTime, airline);
-					//ticketService.deleteTicket(ticket.getTicketNum());
+					ticketService.deleteTicket(ticket.getTicketNum());
 					FlightDisplayFrame flightDisplayFrame = new FlightDisplayFrame(flightList, customer);
 					flightDisplayFrame.setVisible(true);
+					refundChangeFrame.setVisible(false);
 				}
 			}
 		});

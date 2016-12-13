@@ -6,13 +6,14 @@ import java.util.Date;
 import java.util.List;
 
 import javax.swing.event.TableModelListener;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import cn.edu.cuit.ftbs.entity.Flight;
 import cn.edu.cuit.ftbs.entity.Ticket;
 
-public class RefundChangeTableModel implements TableModel {
+public class RefundChangeTableModel extends AbstractTableModel {
 	private List<Ticket> ticketList;
 	private String[] columnName = { "机票编号",
 									"日期",
@@ -117,23 +118,9 @@ public class RefundChangeTableModel implements TableModel {
 		return false;
 	}
 
-	@Override
-	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 
-	}
-
-	@Override
-	public void addTableModelListener(TableModelListener l) {
-
-	}
-
-	@Override
-	public void removeTableModelListener(TableModelListener l) {
-
-	}
-
-	public void removeRow(int row) {
+	public void removeRow(int row){
 		ticketList.remove(row);
+		fireTableRowsDeleted(row, row);
 	}
-
 }
