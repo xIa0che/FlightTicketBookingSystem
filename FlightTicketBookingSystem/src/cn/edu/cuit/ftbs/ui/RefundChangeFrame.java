@@ -45,7 +45,7 @@ public class RefundChangeFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 
-		contentPane.add(new RefundChangePanel(customer), BorderLayout.CENTER);
+		contentPane.add(new RefundChangePanel(customer, this), BorderLayout.CENTER);
 	}
 
 }
