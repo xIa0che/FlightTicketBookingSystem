@@ -13,7 +13,7 @@ import cn.edu.cuit.ftbs.ui.UserInfoFrame;
 public class UserInfoFrameTest {
 	static ICustomerService ics = new CustomerServiceImpl();
 	static Customer customer;
-
+	/*
 	public static void main(String[] args) {
 		try {
 			customer = ics.qureyCustomer("dengyi");
@@ -22,6 +22,6 @@ public class UserInfoFrameTest {
 		}
 		UserInfoFrame userinfo = new UserInfoFrame(customer);
 		userinfo.setVisible(true);
-	}
+	}*/
 
 }

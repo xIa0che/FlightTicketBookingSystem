@@ -177,7 +177,7 @@ public class JImagePane extends JPanel
             }
         }
     }
-
+    /*
     public static void main(String[] args)
     {
         JFrame frame = new JFrame("JImagePane Test");
@@ -188,5 +188,5 @@ public class JImagePane extends JPanel
         frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-    }
+    }*/
 }
