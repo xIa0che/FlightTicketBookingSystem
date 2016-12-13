@@ -19,7 +19,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 
 /**
- * LoginFrame类实现登录窗体
+ * AdminLoginFrame类实现管理员登录窗体
  * @author 陈星
  */
 public class AdminLoginFrame extends JFrame{

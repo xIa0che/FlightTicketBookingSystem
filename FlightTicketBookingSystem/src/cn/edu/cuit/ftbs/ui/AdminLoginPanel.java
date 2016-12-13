@@ -11,7 +11,7 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 /**
- * LoginPanel继承JPanel，为登陆面板初始化背景图片
+ * AdminLoginPanel继承JPanel，为管理员登陆面板初始化背景图片
  * @author 陈星
  */
 public class AdminLoginPanel extends JPanel{
