@@ -28,9 +28,9 @@ public class FlightServiceImpl implements IFlightService{
 	}
 
 	@Override
-	public boolean deleteFlight(String flightNum) {
+	public boolean deleteFlight(String id) {
 		try {
-			return dao.doRemove(flightNum);
+			return dao.doRemove(id);
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "数据库错误", null, JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
