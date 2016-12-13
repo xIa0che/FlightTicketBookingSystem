@@ -46,7 +46,6 @@ public class Flight {
 
 	public Flight(String id) {
 		this.id=id;
-		// TODO Auto-generated constructor stub
 	}
 
 

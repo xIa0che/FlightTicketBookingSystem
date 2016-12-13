@@ -102,7 +102,6 @@ public class TicketDaolmpl implements ITicketDao {
 
 	@Override
 	public List<Ticket> findByUsername(String username) throws SQLException {
-		// TODO Auto-generated method stub
 		List<Ticket> all = new ArrayList<Ticket>();
 		ICustomerService iCustomerService =new CustomerServiceImpl();
 		IFlightService iFlightService = new FlightServiceImpl();
