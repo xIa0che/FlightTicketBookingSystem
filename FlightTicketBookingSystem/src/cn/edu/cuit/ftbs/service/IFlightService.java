@@ -21,14 +21,14 @@ public interface IFlightService {
 	public boolean addFlight(Flight flight);
 
 	/**
-	 * 删除航班信息
-	 * @param flightNum 要删除的航班的航班号
+	 * 根据航班id删除航班信息
+	 * @param id 要删除的航班的航班id
 	 * @return 删除成功返回true，否则返回false
 	 */
-	public boolean deleteFlight(String flightNum);
+	public boolean deleteFlight(String id);
 
 	/**
-	 * 更新航班信息
+	 * 根据航班id更新航班信息
 	 * @param flight 要更新的航班实体类对象
 	 * @return 更新成功返回true，否则返回false
 	 */

@@ -21,7 +21,7 @@ public interface IFlightDao {
 	public boolean doCreate(Flight flight) throws SQLException;
 
 	/**
-	 * 更新航班信息
+	 * 根据航班id更新航班信息
 	 * @param flight 航班实体类对象
 	 * @return 如果修改成功返回true，否则返回false
 	 * @throws SQLException 数据库异常
@@ -30,11 +30,11 @@ public interface IFlightDao {
 
 	/**
 	 *删除航班信息
-	 * @param flightNum 要删除的航班号
+	 * @param id 要删除的航班id
 	 * @return 如果删除成功返回true，否则返回false
 	 * @throws SQLException 数据库异常
 	 */
-	public boolean doRemove(String flightNum) throws SQLException;
+	public boolean doRemove(String id) throws SQLException;
 
 	/**
 	 * 按照出发城市，到达城市，出发时间查询航班

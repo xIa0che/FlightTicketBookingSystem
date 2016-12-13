@@ -23,7 +23,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 
 /**
- * LoginFrame类实现登录窗体
+ * LoginFrame类实现普通用户登录窗体
  *
  * @author 陈星
  */

@@ -11,44 +11,37 @@ public interface ICustomerService {
 	 * 用户登录
 	 * @param username 用户名
 	 * @param password 登陆密码
-	 * @return 如果增加数据成功返回true，否则返回false
-	 * @throws Exception 操作之中出现了异常，返回给被调用处执行处理
+	 * @return 登陆成功返回true，否则返回false
 	 */
-	public boolean login(String username, String password) throws Exception;
+	public boolean login(String username, String password);
 	/**
 	 * 用户注册
 	 * @param customer Customer类对象
-	 * @return 如果增加数据成功返回true，否则返回false
-	 * @throws Exception 操作之中出现了异常，返回给被调用处执行处理
+	 * @return 如果注册成功返回true，否则返回false
 	 */
-	public boolean register(Customer customer)throws Exception;
+	public boolean register(Customer customer);
 	/**
 	 * 更新用户信息
 	 * @param customer Customer类对象
-	 * @return 如果增加数据成功返回true，否则返回false
-	 * @throws Exception 操作之中出现了异常，返回给被调用处执行处理
+	 * @return 如果更新数据成功返回true，否则返回false
 	 */
-	public boolean updateCustomer(Customer customer)throws Exception;
+	public boolean updateCustomer(Customer customer);
 	/**
-	 * 更新用户信息
+	 * 查找用户信息
 	 * @param username 所要查找用户用户名
 	 * @return 返回一个Customer实体类对象
-	 * @throws Exception 操作之中出现了异常，返回给被调用处执行处理
 	 */
-	public Customer qureyCustomer(String username)throws Exception;
+	public Customer qureyCustomer(String username);
 	/**
 	 * 添加用户
 	 * @param customer 所要添加的用户对象
 	 * @return 如果增加数据成功返回true，否则返回false
-	 * @throws Exception 操作之中出现了异常，返回给被调用处执行处理
 	 */
-	public boolean addCustomer(Customer customer)throws Exception;
+	public boolean addCustomer(Customer customer);
 	/**
 	 * 注销登录
 	 * @param username 所要注销的用户的用户名
-	 * @return没有返回值
-	 * @throws Exception 操作之中出现了异常，返回给被调用处执行处理
 	 */
-	public void logout(String username)throws Exception;
+	public void logout(String username);
 
 }
