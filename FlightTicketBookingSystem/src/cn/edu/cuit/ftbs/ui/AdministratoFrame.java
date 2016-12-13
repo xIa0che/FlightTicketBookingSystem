@@ -11,6 +11,7 @@ import cn.edu.cuit.ftbs.service.IFlightService;
 import cn.edu.cuit.ftbs.service.impl.FlightServiceImpl;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -183,6 +184,7 @@ public class AdministratoFrame extends JFrame {
 				try {
 					flight.setDepartureTime(sdf.parse(textField_5.getText()));
 					flight.setArrivalTime(sdf.parse(textField_7.getText()));
+					JOptionPane.showMessageDialog(null, "航班信息修改成功");
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -209,6 +211,7 @@ public class AdministratoFrame extends JFrame {
 				try {
 					flight.setDepartureTime(sdf.parse(textField_5.getText()));
 					flight.setArrivalTime(sdf.parse(textField_7.getText()));
+					JOptionPane.showMessageDialog(null, "航班信息增加成功");
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -226,7 +229,9 @@ public class AdministratoFrame extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
 				ifs.deleteFlight(textField_3.getText());
+				JOptionPane.showMessageDialog(null, "航班删除成功");
 			}
+			
 		});
 		btnNewButton_2.setBounds(427, 325, 93, 23);
 		contentPane.add(btnNewButton_2);
