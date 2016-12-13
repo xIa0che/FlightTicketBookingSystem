@@ -25,7 +25,7 @@ public class FlightServiceImplTest {
 	public static void setupBeforeClass() throws ParseException{
 		departureTime = ft.parse("2016-12-17 19:00");
 		arrivalTime = ft.parse("2016-12-17 22:15");
-		flight = new Flight("CA41942016-12-17", "CA4194", "中国国际航空公司", "320", "北京", "成都",
+		flight = new Flight("CA99992016-12-17", "CA9999", "中国国际航空公司", "320", "北京", "成都",
 				departureTime, arrivalTime, 1690, 1610, 1140);
 	}
 

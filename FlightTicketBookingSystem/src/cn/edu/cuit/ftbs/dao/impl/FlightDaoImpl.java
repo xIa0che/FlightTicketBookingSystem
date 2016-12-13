@@ -22,7 +22,8 @@ public class FlightDaoImpl implements IFlightDao {
 	public boolean doCreate(Flight flight) throws SQLException {
 		String sql = "INSERT INTO T_Flight (flightNum, airline, planeType, "
 				+ "departureCity, arrivalCity, departureTime, arrivalTime, "
-				+ "firstClassCabinPrice, businessClassCabinPrice, " + "economyClassCabinPrice, id) "
+				+ "firstClassCabinPrice, businessClassCabinPrice, "
+				+ "economyClassCabinPrice, id) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		conn = OracleDbManager.getConnection();
 		pstmt = conn.prepareStatement(sql);
@@ -36,9 +37,7 @@ public class FlightDaoImpl implements IFlightDao {
 		pstmt.setInt(8, flight.getFirstClassCabinPrice());
 		pstmt.setInt(9, flight.getBusinessClassCabinPrice());
 		pstmt.setInt(10, flight.getEconomyClassCabinPrice());
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String id = flight.getFlightNum() + dateFormat.format(new Date());
-		pstmt.setString(11, id);
+		pstmt.setString(11, flight.getId());
 		if (pstmt.executeUpdate() > 0) {
 			OracleDbManager.closeConnection(pstmt, conn);
 			return true;
