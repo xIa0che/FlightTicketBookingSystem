@@ -32,6 +32,7 @@ public class MainFrame extends JFrame {
 	private JPanel contentPane;
 	private UserInfoFrame userInfoFrame = null;
 	private RefundChangeFrame refundChangeFrame = null;
+	private AdminLoginFrame adminLoginFrame = null;
 
 	/**
 	 * Launch the application.
@@ -111,6 +112,12 @@ public class MainFrame extends JFrame {
 		});
 
 		JButton btnNewButton_2 = new JButton("系统管理");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				adminLoginFrame = new AdminLoginFrame();
+				adminLoginFrame.setVisible(true);
+			}
+		});
 
 		JButton btnNewButton_3 = new JButton("查询预订");
 		btnNewButton_3.addActionListener(new ActionListener() {

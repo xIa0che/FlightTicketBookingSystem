@@ -31,10 +31,12 @@ public class AdminLoginFrame extends JFrame{
 	private JPanel contentPane;
 	private JPasswordField passwordField;
 	private LoginPanel loginpanel = new LoginPanel();
+	private AdministratoFrame administratoFrame = null;
 
 	/**
 	 * Launch the application.
 	 */
+	/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -46,7 +48,7 @@ public class AdminLoginFrame extends JFrame{
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
@@ -54,7 +56,6 @@ public class AdminLoginFrame extends JFrame{
 	public AdminLoginFrame() {
 		setResizable(false);
 		setTitle("管理员登录");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 423, 276);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -103,7 +104,8 @@ public class AdminLoginFrame extends JFrame{
 					return;
 				}
 				setVisible(false);//关闭登陆窗
-				//TODO 调用管理员面板
+				administratoFrame = new AdministratoFrame();
+				administratoFrame.setVisible(true);
 			}
 
 		});
