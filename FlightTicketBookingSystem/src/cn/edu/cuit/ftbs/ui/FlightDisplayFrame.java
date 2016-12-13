@@ -35,6 +35,7 @@ public class FlightDisplayFrame extends JFrame {
 	 */
 	public FlightDisplayFrame(List<Flight> flightList, Customer customer) {
 		setBounds(100, 100, 980, 489);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

@@ -39,6 +39,7 @@ public class RefundChangeFrame extends JFrame {
 	 */
 	public RefundChangeFrame(Customer customer) {
 		setBounds(100, 100, 948, 496);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

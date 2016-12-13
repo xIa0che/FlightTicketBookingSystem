@@ -27,6 +27,7 @@ import java.awt.event.ActionEvent;
 
 /**
  * 程序主界面
+ *
  * @author xIa0che
  *
  */
@@ -42,18 +43,12 @@ public class MainFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-/*	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainFrame frame = new MainFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	} */
+	/*
+	 * public static void main(String[] args) { EventQueue.invokeLater(new
+	 * Runnable() { public void run() { try { MainFrame frame = new MainFrame();
+	 * frame.setVisible(true); } catch (Exception e) { e.printStackTrace(); } }
+	 * }); }
+	 */
 
 	/**
 	 * Create the frame.
@@ -68,7 +63,8 @@ public class MainFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
-		Image iamge = new ImageIcon("src/cn/edu/cuit/ftbs/resource/giphy.gif").getImage();
+		Image iamge =
+				new ImageIcon(LoginFrame.class.getResource("/cn/edu/cuit/ftbs/resource/giphy.gif")).getImage();
 		JImagePane imagePane = new JImagePane(iamge, JImagePane.SCALED);
 		contentPane.add(imagePane);
 

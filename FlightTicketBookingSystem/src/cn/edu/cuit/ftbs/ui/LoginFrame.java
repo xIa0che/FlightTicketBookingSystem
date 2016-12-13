@@ -70,6 +70,7 @@ public class LoginFrame extends JFrame {
 		loginpanel.setBounds(0, 0, 420, 248);
 		loginpanel.setBackground(new Color(0xD8DDC7));
 		loginpanel.setOpaque(false);
+		setLocationRelativeTo(null);
 
 		contentPane.add(loginpanel);
 		loginpanel.setLayout(null);
