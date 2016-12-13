@@ -1,13 +1,10 @@
 ﻿package cn.edu.cuit.ftbs.ui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import javax.swing.border.EmptyBorder;
 import cn.edu.cuit.ftbs.entity.Flight;
-import cn.edu.cuit.ftbs.service.IFlightService;
 import cn.edu.cuit.ftbs.service.impl.FlightServiceImpl;
 
 import javax.swing.JLabel;
@@ -20,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 /**
  * AdministratoFrame类实现管理航班窗体
- * @author
+ * @author 张玉乾
  */
 public class AdministratoFrame extends JFrame {
 	/**
@@ -185,7 +182,6 @@ public class AdministratoFrame extends JFrame {
 					flight.setArrivalTime(sdf.parse(textField_7.getText()));
 					JOptionPane.showMessageDialog(null, "航班信息修改成功");
 				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				flight.setFirstClassCabinPrice(Integer.valueOf(textField_8.getText()));
@@ -212,7 +208,6 @@ public class AdministratoFrame extends JFrame {
 					flight.setArrivalTime(sdf.parse(textField_7.getText()));
 					JOptionPane.showMessageDialog(null, "航班信息增加成功");
 				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				flight.setFirstClassCabinPrice(Integer.valueOf(textField_8.getText()));

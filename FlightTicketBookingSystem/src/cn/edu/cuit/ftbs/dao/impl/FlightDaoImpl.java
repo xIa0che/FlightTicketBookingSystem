@@ -14,6 +14,11 @@ import cn.edu.cuit.ftbs.dao.IFlightDao;
 import cn.edu.cuit.ftbs.entity.Flight;
 import cn.edu.cuit.ftbs.util.OracleDbManager;
 
+/**
+ * Flight数据访问实现类
+ * @author xIa0che
+ *
+ */
 public class FlightDaoImpl implements IFlightDao {
 	private Connection conn;
 	private PreparedStatement pstmt;

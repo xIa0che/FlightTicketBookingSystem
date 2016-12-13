@@ -11,6 +11,11 @@ import cn.edu.cuit.ftbs.dao.impl.FlightDaoImpl;
 import cn.edu.cuit.ftbs.entity.Flight;
 import cn.edu.cuit.ftbs.service.IFlightService;
 
+/**
+ * Flight业务逻辑层接口实现类
+ * @author xIa0che
+ *
+ */
 public class FlightServiceImpl implements IFlightService{
 	IFlightDao dao = new FlightDaoImpl();
 

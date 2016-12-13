@@ -10,6 +10,11 @@ import cn.edu.cuit.ftbs.entity.Ticket;
 import cn.edu.cuit.ftbs.service.ITicketService;
 import cn.edu.cuit.ftbs.service.impl.TicketServicelmpl;
 
+/**
+ * 机票业务逻辑单元测试
+ * @author xIa0che
+ *
+ */
 public class TicketServicelmplTest {
 
 	@Test
@@ -47,7 +52,7 @@ public class TicketServicelmplTest {
 		System.out.println(i.getCustomer().getUsername());
 		System.out.println(i.getFlightInfo().getId());
 		}
-		
+
 	}
 
 }

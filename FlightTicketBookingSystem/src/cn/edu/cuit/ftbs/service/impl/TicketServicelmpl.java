@@ -10,12 +10,12 @@ import cn.edu.cuit.ftbs.dao.impl.TicketDaolmpl;
 import cn.edu.cuit.ftbs.entity.Ticket;
 import cn.edu.cuit.ftbs.service.ITicketService;
 /**
- * 业务逻辑实现类
+ * 机票业务逻辑实现类
  * @author邓义
  *
  */
 public class TicketServicelmpl implements ITicketService {
-	ITicketDao dao = new TicketDaolmpl();       
+	ITicketDao dao = new TicketDaolmpl();
 	@Override
 	public boolean addTicket(Ticket ticket) {
 		try {

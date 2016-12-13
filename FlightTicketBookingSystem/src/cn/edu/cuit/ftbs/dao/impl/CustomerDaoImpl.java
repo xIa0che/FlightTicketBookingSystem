@@ -9,7 +9,7 @@ import cn.edu.cuit.ftbs.dao.ICustomerDao;
 import cn.edu.cuit.ftbs.entity.Customer;
 import cn.edu.cuit.ftbs.util.OracleDbManager;
 /**
- * ICustomerDao操作接口实现类
+ * Customer数据访问接口实现类
  * @author 陈星
  */
 public class CustomerDaoImpl implements ICustomerDao {

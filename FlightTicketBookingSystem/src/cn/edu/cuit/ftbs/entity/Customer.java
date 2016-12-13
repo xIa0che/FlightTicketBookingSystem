@@ -1,6 +1,5 @@
 package cn.edu.cuit.ftbs.entity;
 
-import java.util.ArrayList;
 /**
  * Customer用户实体类，定义基本属性及方法
  * @author 陈星
@@ -17,11 +16,11 @@ public class Customer {
 	private String password;
 	//private ArrayList<Ticket> tickets;
 	//private ArrayList<Order> orders;
-	
-	
-	
+
+
+
 	public Customer(){}
-	
+
 	public Customer(String id, String name, String sex, String telephone, String idCardNumber, String eMail,
 			String address, String username, String password /*ArrayList<Ticket> tickets, ArrayList<Order> orders*/) {
 		Id = id;
@@ -109,6 +108,6 @@ public class Customer {
 	public void setOrders(ArrayList<Order> orders) {
 		this.orders = orders;
 	}*/
-	
-	
+
+
 }

@@ -1,23 +1,4 @@
 package cn.edu.cuit.ftbs.util;
-/**
- *
- * Copyright: Ares.
- * All Rights Reserved.
- * Company: Insigma HT/上海创图
- * @author Ares <a href="mailto:icerainsoft@hotmail.com>send email</a>
- * @date 2013-11-17 16:53
- *
- * Revision History
- *
- * Date            Programmer              Notes
- * ---------    ---------------------  --------------------------------------------
- * 2013-11-17       Ares                    initial
- * 2014-09-16       Ares                    fix bug @n3k123
- *
- * 1. you can change date format by parameter.
- * 2. you can change week label content by showTEXT.
- * 3. you can change dayOfWeek order by defaultStartDAY.
- */
 
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;

@@ -42,7 +42,6 @@ public class RegisterFrame extends JFrame {
 	private JPasswordField passwordField1;
 	private Customer customer = new Customer();
 	private ICustomerService cs = new CustomerServiceImpl();
-	private LoginFrame loginFrame = null;
 	private MainFrame mainFrame;
 
 	/**
@@ -58,7 +57,6 @@ public class RegisterFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public RegisterFrame(LoginFrame loginFrame) {
-		this.loginFrame = loginFrame;
 		setResizable(false);
 		setTitle("用户注册");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

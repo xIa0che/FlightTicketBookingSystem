@@ -3,7 +3,7 @@ package cn.edu.cuit.ftbs.service;
 import cn.edu.cuit.ftbs.entity.Customer;
 
 /**
- * ICustomerService操作接口
+ * Customer业务逻辑接口
  * @author 陈星
  */
 public interface ICustomerService {

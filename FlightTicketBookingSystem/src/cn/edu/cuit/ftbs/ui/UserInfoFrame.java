@@ -1,6 +1,5 @@
 package cn.edu.cuit.ftbs.ui;
 
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,15 +18,14 @@ import javax.swing.border.EmptyBorder;
 import cn.edu.cuit.ftbs.entity.Customer;
 import cn.edu.cuit.ftbs.service.ICustomerService;
 import cn.edu.cuit.ftbs.service.impl.CustomerServiceImpl;
+
 /**
  * UserinfoFrame类实现用户信息显示窗体，并可在窗体中修改用户信息
+ *
  * @author 陈星
  */
 public class UserInfoFrame extends JFrame {
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField realnameTextField;
@@ -126,7 +124,7 @@ public class UserInfoFrame extends JFrame {
 		group.add(manRadioButton);
 		if (customer.getSex().equals("男")) {
 			manRadioButton.setSelected(true);
-		}else {
+		} else {
 			womanRadioButton.setSelected(true);
 		}
 
@@ -165,61 +163,65 @@ public class UserInfoFrame extends JFrame {
 				String temp;
 				String password1 = new String(passwordField1.getPassword());
 				String password2 = new String(passwordField2.getPassword());
-				if(password1.equals("") || password2.equals("")){
-					JOptionPane.showMessageDialog(UserInfoFrame.this, "密码不能为空！请重新输入！","警告",JOptionPane.ERROR_MESSAGE);
+				if (password1.equals("") || password2.equals("")) {
+					JOptionPane.showMessageDialog(UserInfoFrame.this, "密码不能为空！请重新输入！", "警告", JOptionPane.ERROR_MESSAGE);
 					return;
-				}else{
-					if(password1.equals(password2)){
+				} else {
+					if (password1.equals(password2)) {
 						customer.setPassword(password1);
-					}else {
-						JOptionPane.showMessageDialog(UserInfoFrame.this, "两次输入密码不一致！请重新输入！","警告",JOptionPane.ERROR_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(UserInfoFrame.this, "两次输入密码不一致！请重新输入！", "警告",
+								JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 				}
 				temp = realnameTextField.getText();
-				if(temp.equals("")){
-					JOptionPane.showMessageDialog(UserInfoFrame.this, "真实姓名不能为空！请重新输入！","警告",JOptionPane.ERROR_MESSAGE);
+				if (temp.equals("")) {
+					JOptionPane.showMessageDialog(UserInfoFrame.this, "真实姓名不能为空！请重新输入！", "警告",
+							JOptionPane.ERROR_MESSAGE);
 					return;
-				}else {
+				} else {
 					customer.setName(temp);
 				}
 				temp = customer.getSex();
-				if(temp.equals("")){
-					JOptionPane.showMessageDialog(UserInfoFrame.this, "请选择性别！","警告",JOptionPane.ERROR_MESSAGE);
+				if (temp.equals("")) {
+					JOptionPane.showMessageDialog(UserInfoFrame.this, "请选择性别！", "警告", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				temp = telTextField.getText();
-				if(temp.equals("")){
-					JOptionPane.showMessageDialog(UserInfoFrame.this, "电话号码不能为空！请重新输入！","警告",JOptionPane.ERROR_MESSAGE);
+				if (temp.equals("")) {
+					JOptionPane.showMessageDialog(UserInfoFrame.this, "电话号码不能为空！请重新输入！", "警告",
+							JOptionPane.ERROR_MESSAGE);
 					return;
-				}else {
+				} else {
 					customer.setTelephone(temp);
 				}
 				temp = idcardTextField.getText();
-				if(temp.equals("")){
-					JOptionPane.showMessageDialog(UserInfoFrame.this, "身份证号不能为空！请重新输入！","警告",JOptionPane.ERROR_MESSAGE);
+				if (temp.equals("")) {
+					JOptionPane.showMessageDialog(UserInfoFrame.this, "身份证号不能为空！请重新输入！", "警告",
+							JOptionPane.ERROR_MESSAGE);
 					return;
-				}else {
+				} else {
 					customer.setIdCardNumber(temp);
 				}
 				temp = emailTextField.getText();
-				if(temp.equals("")){
-					JOptionPane.showMessageDialog(UserInfoFrame.this, "邮箱不能为空！请重新输入！","警告",JOptionPane.ERROR_MESSAGE);
+				if (temp.equals("")) {
+					JOptionPane.showMessageDialog(UserInfoFrame.this, "邮箱不能为空！请重新输入！", "警告", JOptionPane.ERROR_MESSAGE);
 					return;
-				}else {
+				} else {
 					customer.seteMail(temp);
 				}
 				temp = addressTextField.getText();
-				if(temp.equals("")){
-					JOptionPane.showMessageDialog(UserInfoFrame.this, "地址不能为空！请重新输入！","警告",JOptionPane.ERROR_MESSAGE);
+				if (temp.equals("")) {
+					JOptionPane.showMessageDialog(UserInfoFrame.this, "地址不能为空！请重新输入！", "警告", JOptionPane.ERROR_MESSAGE);
 					return;
-				}else {
+				} else {
 					customer.setAddress(temp);
 				}
 
 				try {
 					if (!cs.updateCustomer(customer)) {
-						JOptionPane.showMessageDialog(UserInfoFrame.this, "修改失败！","警告",JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(UserInfoFrame.this, "修改失败！", "警告", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 
@@ -227,7 +229,7 @@ public class UserInfoFrame extends JFrame {
 
 					e1.printStackTrace();
 				}
-				setVisible(false);//关闭信息窗
+				setVisible(false);// 关闭信息窗
 			}
 		});
 		panel.add(button1);
@@ -239,7 +241,7 @@ public class UserInfoFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				setVisible(false);//关闭信息窗
+				setVisible(false);// 关闭信息窗
 			}
 		});
 		panel.add(button2);

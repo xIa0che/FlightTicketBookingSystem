@@ -33,7 +33,15 @@ import java.awt.BorderLayout;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
+/**
+ * 航班查询Panel
+ * @author xIa0che
+ *
+ */
 public class FlightQueryPanel extends JPanel {
+
+	private static final long serialVersionUID = -6210712713498428030L;
+
 	private IFlightService iFlightService = new FlightServiceImpl();
 
 	private JTextField departureCitytextField;
@@ -41,13 +49,11 @@ public class FlightQueryPanel extends JPanel {
 	private JTextFieldWithIcon departureTimeTextField;
 	private JTextFieldWithIcon returnDateTextField;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private Customer customer = null;
 
 	/**
 	 * Create the panel.
 	 */
 	public FlightQueryPanel(JFrame flightQueryFrame, Customer customer) {
-		this.customer = customer;
 
 		setOpaque(false);
 		setBackground(Color.LIGHT_GRAY);

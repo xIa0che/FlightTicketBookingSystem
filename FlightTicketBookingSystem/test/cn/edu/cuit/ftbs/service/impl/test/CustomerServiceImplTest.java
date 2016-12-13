@@ -1,7 +1,5 @@
 package cn.edu.cuit.ftbs.service.impl.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import cn.edu.cuit.ftbs.entity.Customer;
@@ -14,8 +12,8 @@ import cn.edu.cuit.ftbs.service.impl.CustomerServiceImpl;
 public class CustomerServiceImplTest {
 	private ICustomerService iCustomerService = new CustomerServiceImpl();
 	private Customer customer;
-	
-	
+
+
 	@Test
 	public void testUpdateCustomer() throws Exception {
 		customer = iCustomerService.qureyCustomer("dengyi");

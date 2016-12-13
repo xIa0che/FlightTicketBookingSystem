@@ -1,17 +1,14 @@
 package cn.edu.cuit.ftbs.util;
-import java.awt.BorderLayout;
+
 import java.awt.Graphics;
 import java.awt.Image;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
  * 可设置背景图片的JPanel，提供了三种显示背景图片的方式：居中、平铺和拉伸。
  * 未设置背景图片的情况下，同JPanel。
  *
- * @author 003
+ * @author xIa0che
  */
 public class JImagePane extends JPanel
 {
@@ -177,16 +174,5 @@ public class JImagePane extends JPanel
             }
         }
     }
-    /*
-    public static void main(String[] args)
-    {
-        JFrame frame = new JFrame("JImagePane Test");
-        Image image = new ImageIcon("src/resource/giphy.gif").getImage();
-        JImagePane imagePane = new JImagePane(image, JImagePane.SCALED);
-        frame.getContentPane().add(imagePane, BorderLayout.CENTER);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }*/
+
 }

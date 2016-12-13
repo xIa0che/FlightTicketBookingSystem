@@ -7,9 +7,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
 
 import cn.edu.cuit.ftbs.entity.Customer;
 import cn.edu.cuit.ftbs.entity.Flight;
@@ -32,27 +30,23 @@ import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 
+/**
+ * 航班显示Panel
+ * @author xIa0che
+ *
+ */
 public class FlightDisplayPanel extends JPanel {
 
 	private static final long serialVersionUID = 8049180474444127538L;
 	private JTable table;
-	private List<Flight> flightList;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private Customer customer = null;
 
-	/*
-	 * private ITicketService iTicketService = new TicketServiceImpl(); private
-	 * IOrderService iOrderService = new OrderServiceImpl();
-	 */
 	/**
 	 * Create the panel.
 	 */
 	public FlightDisplayPanel(List<Flight> flightList, Customer customer) {
-		this.flightList = flightList;
-		this.customer = customer;
 
 		setBackground(Color.WHITE);
 
@@ -77,12 +71,12 @@ public class FlightDisplayPanel extends JPanel {
 		table.setShowVerticalLines(false);
 		table.setBackground(new Color(240, 250, 253));
 
-
-		/* table.setModel(new DefaultTableModel( new Object[][] { {"ca132124",
-		 null, null}, {"ca734513", null, null}, {"ca765379", null, null},
-		 {"ca765379", null, null}, }, new String[] { "New column",
-		 "New column", "New column" } ));*/
-
+		/*
+		 * table.setModel(new DefaultTableModel( new Object[][] { {"ca132124",
+		 * null, null}, {"ca734513", null, null}, {"ca765379", null, null},
+		 * {"ca765379", null, null}, }, new String[] { "New column",
+		 * "New column", "New column" } ));
+		 */
 
 		FlightDisplayTableModel flightDisplayTableModel = new FlightDisplayTableModel(flightList);
 		table.setModel(flightDisplayTableModel);
@@ -91,7 +85,6 @@ public class FlightDisplayPanel extends JPanel {
 		column1.setPreferredWidth(150);
 		TableColumn column5 = table.getColumnModel().getColumn(5);
 		column5.setPreferredWidth(125);
-
 
 		scrollPane.setViewportView(table);
 		setLayout(new BorderLayout(0, 0));
@@ -141,10 +134,11 @@ public class FlightDisplayPanel extends JPanel {
 				ticket.setTicketNum(Long.toString(date.getTime()));
 				ticket.setCustomer(customer);
 				try {
-					if (iTicketService.addTicket(ticket)){
+					if (iTicketService.addTicket(ticket)) {
 						JOptionPane.showMessageDialog(null, "机票预订成功", null, JOptionPane.PLAIN_MESSAGE);
 						return;
-					};
+					}
+					;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

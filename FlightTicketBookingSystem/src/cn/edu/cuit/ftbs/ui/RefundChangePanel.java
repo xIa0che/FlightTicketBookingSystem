@@ -4,10 +4,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import cn.edu.cuit.ftbs.entity.Customer;
 import cn.edu.cuit.ftbs.entity.Flight;
@@ -29,10 +26,8 @@ import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.ListSelectionModel;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -40,10 +35,16 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+/**
+ * 退票改签Panel
+ * @author xIa0che
+ *
+ */
 public class RefundChangePanel extends JPanel {
+
+	private static final long serialVersionUID = 4965327947935194659L;
 	private JTable table;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private Customer customer;
 	private ITicketService ticketService = new TicketServicelmpl();
 	private IFlightService flightService = new FlightServiceImpl();
 	private List<Ticket> ticketList = null;
@@ -53,7 +54,6 @@ public class RefundChangePanel extends JPanel {
 	 * Create the panel.
 	 */
 	public RefundChangePanel(Customer customer, RefundChangeFrame refundChangeFrame) {
-		this.customer = customer;
 
 		setLayout(new BorderLayout(0, 0));
 

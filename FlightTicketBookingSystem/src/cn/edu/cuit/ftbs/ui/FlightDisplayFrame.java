@@ -16,11 +16,18 @@ import javax.swing.ImageIcon;
 import javax.swing.BoxLayout;
 
 import java.awt.FlowLayout;
-import javax.swing.SwingConstants;
-import java.awt.Component;
 
+/**
+ * 航班显示Frame，显示查询到的航班
+ * @author xIa0che
+ *
+ */
 public class FlightDisplayFrame extends JFrame {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -2315951889173477897L;
 	private JPanel contentPane;
 
 	/**

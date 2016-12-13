@@ -5,7 +5,7 @@ import java.util.List;
 import cn.edu.cuit.ftbs.entity.Ticket;
 
 /**
- * 业务逻辑层
+ * Ticket业务逻辑层接口
  * @author 邓义
  *
  */
@@ -31,7 +31,7 @@ public interface ITicketService {
 	public boolean updateTicket(Ticket ticket);
 	/**
 	 * 执行查询机票操作
-	 * @param username 要查询机票的用户名 
+	 * @param username 要查询机票的用户名
 	 * @return 如果没有指定的用户名，返回值为null，<br>
 	 * 如果有指定的机票信息，则将所有的机票信息包装到Ticket实例化对象列表之中返回。
 	 */

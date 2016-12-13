@@ -1,7 +1,5 @@
 package cn.edu.cuit.ftbs.service.impl.test;
 
-import static org.junit.Assert.*;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,6 +12,11 @@ import cn.edu.cuit.ftbs.entity.Flight;
 import cn.edu.cuit.ftbs.service.IFlightService;
 import cn.edu.cuit.ftbs.service.impl.FlightServiceImpl;
 
+/**
+ * 航班业务逻辑单元测试
+ * @author xIa0che
+ *
+ */
 public class FlightServiceImplTest {
 	private IFlightService iFlightService = new FlightServiceImpl();
 	private static SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd HH:mm");

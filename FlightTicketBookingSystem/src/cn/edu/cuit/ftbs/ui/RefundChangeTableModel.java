@@ -5,15 +5,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 import cn.edu.cuit.ftbs.entity.Flight;
 import cn.edu.cuit.ftbs.entity.Ticket;
 
+/**
+ * 退票改签界面jtable的table model
+ * @author xIa0che
+ *
+ */
 public class RefundChangeTableModel extends AbstractTableModel {
+
+	private static final long serialVersionUID = -1948278996430158973L;
 	private List<Ticket> ticketList;
 	private String[] columnName = { "机票编号",
 									"日期",

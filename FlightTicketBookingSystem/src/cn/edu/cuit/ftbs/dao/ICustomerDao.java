@@ -3,7 +3,7 @@ package cn.edu.cuit.ftbs.dao;
 import cn.edu.cuit.ftbs.entity.Customer;
 
 /**
- * ICustomerDao操作接口
+ * Customer数据访问接口
  * @author 陈星
  */
 public interface ICustomerDao {

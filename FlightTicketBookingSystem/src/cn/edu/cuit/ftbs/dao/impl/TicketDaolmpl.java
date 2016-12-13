@@ -16,7 +16,7 @@ import cn.edu.cuit.ftbs.service.impl.FlightServiceImpl;
 import cn.edu.cuit.ftbs.util.OracleDbManager;
 
 /**
- * 数据访问实现类
+ * Ticket数据访问实现类
  *
  * @author邓义
  *

@@ -1,7 +1,6 @@
 package cn.edu.cuit.ftbs.ui;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,14 +8,14 @@ import javax.swing.border.EmptyBorder;
 
 import cn.edu.cuit.ftbs.entity.Customer;
 
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import java.awt.Component;
-import javax.swing.Box;
-import javax.swing.JScrollPane;
-
+/**
+ * 退票改签Frame
+ * @author xIa0che
+ *
+ */
 public class RefundChangeFrame extends JFrame {
 
+	private static final long serialVersionUID = 4789329843931380744L;
 	private JPanel contentPane;
 
 	/**

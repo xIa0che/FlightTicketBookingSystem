@@ -1,7 +1,6 @@
 package cn.edu.cuit.ftbs.ui;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -24,10 +23,16 @@ import javax.swing.SwingConstants;
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.event.ActionListener;
-import java.security.cert.TrustAnchor;
 import java.awt.event.ActionEvent;
 
+/**
+ * 程序主界面
+ * @author xIa0che
+ *
+ */
 public class MainFrame extends JFrame {
+
+	private static final long serialVersionUID = -3455978589878253469L;
 	private FlightQueryFrame flightQueryFrame = null;
 	private JPanel contentPane;
 	private UserInfoFrame userInfoFrame = null;

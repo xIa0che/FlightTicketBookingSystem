@@ -7,8 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 import cn.edu.cuit.ftbs.service.ICustomerService;
 import cn.edu.cuit.ftbs.service.impl.CustomerServiceImpl;
 
@@ -136,7 +134,6 @@ public class LoginFrame extends JFrame {
 				setVisible(false);// 关闭登陆窗
 				try {
 					mainFrame = new MainFrame(iCustomerService.qureyCustomer(username));
-					//TODO iCustomerService异常说明有错误
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

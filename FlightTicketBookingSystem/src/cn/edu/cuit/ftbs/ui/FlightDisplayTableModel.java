@@ -5,13 +5,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableModel;
 
 import cn.edu.cuit.ftbs.entity.Flight;
 
+/**
+ * 航班显示面板中jtable的table model
+ * @author xIa0che
+ *
+ */
 public class FlightDisplayTableModel extends AbstractTableModel {
+
+	private static final long serialVersionUID = -2164157649847677943L;
 	private List<Flight> flightList;
 	private String[] columnName = {"航班",
 								   "航空公司",

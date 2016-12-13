@@ -7,7 +7,7 @@ import java.util.List;
 import cn.edu.cuit.ftbs.entity.Ticket;
 
 /**
- * 数据访问类接口
+ * Ticket数据访问类接口
  * @author 邓义
  */
 public interface ITicketDao{
@@ -47,5 +47,5 @@ public interface ITicketDao{
 	 * 如果有指定的机票信息，返回机票信息的列表
 	 * @throws SQLException 数据库异常
 	 */
-	public List<Ticket> findByUsername(String username) throws SQLException; 
+	public List<Ticket> findByUsername(String username) throws SQLException;
 }

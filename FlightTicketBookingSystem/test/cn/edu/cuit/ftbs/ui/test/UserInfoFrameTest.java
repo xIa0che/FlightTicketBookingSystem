@@ -3,7 +3,6 @@ package cn.edu.cuit.ftbs.ui.test;
 import cn.edu.cuit.ftbs.entity.Customer;
 import cn.edu.cuit.ftbs.service.ICustomerService;
 import cn.edu.cuit.ftbs.service.impl.CustomerServiceImpl;
-import cn.edu.cuit.ftbs.ui.UserInfoFrame;
 
 /**
  * 测试用户信息窗体
