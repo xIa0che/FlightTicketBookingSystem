@@ -161,7 +161,7 @@ public class AdministratoFrame extends JFrame {
 		contentPane.add(textField_9);
 		textField_9.setColumns(10);
 
-		JLabel lblNewLabel_8 = new JLabel("经济仓价格：");
+		JLabel lblNewLabel_8 = new JLabel("经济舱价格：");
 		lblNewLabel_8.setBounds(59, 266, 81, 15);
 		contentPane.add(lblNewLabel_8);
 
