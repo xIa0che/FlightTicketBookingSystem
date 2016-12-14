@@ -227,8 +227,11 @@ public class AdministratoFrame extends JFrame {
 		JButton btnNewButton_2 = new JButton("删除航班");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ifs.deleteFlight(textField_3.getText());
+				if(ifs.deleteFlight(textField_3.getText()))
 				JOptionPane.showMessageDialog(null, "航班删除成功");
+				else
+					JOptionPane.showMessageDialog(null, "航班删除失败");
+					
 			}
 
 		});
