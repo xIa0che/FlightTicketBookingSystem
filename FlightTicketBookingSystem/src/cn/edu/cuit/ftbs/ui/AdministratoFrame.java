@@ -159,7 +159,7 @@ public class AdministratoFrame extends JFrame {
 		contentPane.add(textField_9);
 		textField_9.setColumns(10);
 
-		JLabel lblNewLabel_8 = new JLabel("经济仓价格：");
+		JLabel lblNewLabel_8 = new JLabel("经济舱价格：");
 		lblNewLabel_8.setBounds(59, 266, 81, 15);
 		contentPane.add(lblNewLabel_8);
 
@@ -223,8 +223,11 @@ public class AdministratoFrame extends JFrame {
 		JButton btnNewButton_2 = new JButton("删除航班");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ifs.deleteFlight(textField_3.getText());
+				if(ifs.deleteFlight(textField_3.getText()))
 				JOptionPane.showMessageDialog(null, "航班删除成功");
+				else
+					JOptionPane.showMessageDialog(null, "航班删除失败");
+					
 			}
 
 		});
