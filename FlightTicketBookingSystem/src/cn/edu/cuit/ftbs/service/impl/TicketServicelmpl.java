@@ -11,8 +11,7 @@ import cn.edu.cuit.ftbs.entity.Ticket;
 import cn.edu.cuit.ftbs.service.ITicketService;
 /**
  * 机票业务逻辑实现类
- * @author邓义
- *
+ * @author 邓义
  */
 public class TicketServicelmpl implements ITicketService {
 	ITicketDao dao = new TicketDaolmpl();

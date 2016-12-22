@@ -18,7 +18,7 @@ import cn.edu.cuit.ftbs.util.OracleDbManager;
 /**
  * Ticket数据访问实现类
  *
- * @author邓义
+ * @author 邓义
  *
  */
 

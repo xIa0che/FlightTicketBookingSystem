@@ -1,4 +1,4 @@
-﻿package cn.edu.cuit.ftbs.ui;
+package cn.edu.cuit.ftbs.ui;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -227,7 +227,7 @@ public class AdministratoFrame extends JFrame {
 				JOptionPane.showMessageDialog(null, "航班删除成功");
 				else
 					JOptionPane.showMessageDialog(null, "航班删除失败");
-					
+
 			}
 
 		});
