@@ -14,6 +14,10 @@ A simple java application of booking tickets, which uses swing and oracle with a
 3. 管理员界面清空功能
 4. 管理员界面错误输入提示
 
+###数据库创建
+数据库用户名：ftbs  
+数据库密码：ftbs
+
 ##Screencast
 ####登录界面
 ![登录界面](登录界面.png)
