@@ -22,7 +22,7 @@ public interface ITicketService {
 	 * @param ticketNum 要删除机票编号
 	 * @return 如果删除成功，返回true，如果数据不存在或删除失败，则返回false
 	 */
-	public boolean deleteTicket(String ticketNUm);
+	public boolean deleteTicket(String ticketNum);
 	/**
 	 * 执行根据用户名更新机票
 	 * @param ticket 包含新数据的对象

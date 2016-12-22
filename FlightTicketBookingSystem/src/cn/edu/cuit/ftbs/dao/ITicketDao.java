@@ -34,12 +34,12 @@ public interface ITicketDao{
 	public boolean doRemove(String ticketNum) throws SQLException;
 	/**
 	 * 根据机票编号查找机票
-	 * @param ticketnum 待查找机票的机票编号
+	 * @param ticketNum 待查找机票的机票编号
 	 * @return 如果没有指定的机票信息，返回值为null，<br>
 	 * 如果有指定的机票信息，则将所有的机票信息包装到Ticket实例化对象之中返回。
 	 * @throws Exception SQLException 数据库异常
 	 */
-	public Ticket findByTicketNum(String ticketnum) throws SQLException;
+	public Ticket findByTicketNum(String ticketNum) throws SQLException;
 	/**
 	 * 根据用户名查找机票
 	 * @param username 待查询机票的用户名

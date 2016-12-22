@@ -31,7 +31,7 @@ public interface ICustomerDao {
 	 * @param username 所要查找用户的用户名
 	 * @return 如果查找成功返回查找到的用户实例，否则返回null
 	 */
-	public Customer findByusername(String username);
+	public Customer findByUsername(String username);
 	/**
 	 * 验证用户名和密码
 	 * @param username 用户名

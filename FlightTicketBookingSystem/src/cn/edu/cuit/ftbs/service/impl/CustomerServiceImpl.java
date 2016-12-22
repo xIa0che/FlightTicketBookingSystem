@@ -45,7 +45,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	@Override
 	public Customer qureyCustomer(String username) {
 		try {
-			return cd.findByusername(username);
+			return cd.findByUsername(username);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

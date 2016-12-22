@@ -95,7 +95,7 @@ public class CustomerDaoImpl implements ICustomerDao {
 	}
 
 	@Override
-	public Customer findByusername(String username){
+	public Customer findByUsername(String username){
 		Customer customer = null;
 		conn = OracleDbManager.getConnection();
 		String sql = "SELECT name,"

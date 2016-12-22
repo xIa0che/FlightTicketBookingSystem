@@ -5,7 +5,6 @@ package cn.edu.cuit.ftbs.entity;
  * @author 陈星
  */
 public class Customer {
-	private String Id;
 	private String name;
 	private String sex;
 	private String telephone;
@@ -21,9 +20,8 @@ public class Customer {
 
 	public Customer(){}
 
-	public Customer(String id, String name, String sex, String telephone, String idCardNumber, String eMail,
+	public Customer(String name, String sex, String telephone, String idCardNumber, String eMail,
 			String address, String username, String password /*ArrayList<Ticket> tickets, ArrayList<Order> orders*/) {
-		Id = id;
 		this.name = name;
 		this.sex = sex;
 		this.telephone = telephone;
@@ -42,12 +40,6 @@ public class Customer {
 		this.username=username;
 	}
 
-	public String getId() {
-		return Id;
-	}
-	public void setId(String id) {
-		Id = id;
-	}
 	public String getName() {
 		return name;
 	}
